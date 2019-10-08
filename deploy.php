@@ -3,14 +3,17 @@ namespace Deployer;
 
 require 'recipe/common.php';
 
+// ssh ubuntu@52.221.214.151 -i ~/.ssh/nihato-staging.pem
+
 // Project name
-set('application', '/var/www/html');
+set('realme', '/var/www/html');
+set('branch', 'master');
 
 // Project repository
-set('repository', 'git@domain.com:username/repository.git');
+set('repository', 'git@github.com:phuchnh/realme.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
-set('git_tty', true); 
+set('git_tty', true);
 
 // Shared files/dirs between deploys 
 set('shared_files', ['wp-config.php']);
@@ -22,13 +25,17 @@ set('writable_dirs', ['wp-content/uploads']);
 
 // Hosts
 
-host('project.com')
-    ->set('deploy_path', '{{application}}');
-    
+host('52.221.214.151')
+	->user('ubuntu')
+	->identityFile('~/.ssh/nihato-staging.pem')
+	->port(22)
+	->forwardAgent(true)
+    ->set('deploy_path', '{{realme}}');
+
 
 // Tasks
 
-desc('Deploy Realme project');
+desc('Deploy {{realme}} project');
 task('deploy', [
     'deploy:info',
     'deploy:prepare',
@@ -37,7 +44,6 @@ task('deploy', [
     'deploy:update_code',
     'deploy:shared',
     'deploy:writable',
-    'deploy:vendors',
     'deploy:clear_paths',
     'deploy:symlink',
     'deploy:unlock',
