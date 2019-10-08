@@ -7,7 +7,8 @@ require 'recipe/common.php';
 
 // Project name
 set('realme', '/var/www/html');
-set('branch', 'master');
+set('branch', 'develop');
+set('keep_releases', 5);
 
 // Project repository
 set('repository', 'git@github.com:phuchnh/realme.git');
