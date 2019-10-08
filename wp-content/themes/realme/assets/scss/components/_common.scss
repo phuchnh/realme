@@ -1,0 +1,43 @@
+// Common Blog Heading Block - Reuseable
+.container {
+  width: 1200px;
+  max-width: 100%;
+  padding: 0;
+
+  @media #{$information-lg-tablet} {
+    width: 960px;
+  }
+
+  @media #{$information-tablet} {
+    width: 720px;
+  }
+}
+
+.see-more-btn {
+  font-size: 1.04vw;
+  color: #fff;
+  display: inline-block;
+  border: 1px solid #fff;
+  padding: count-vw(17) count-vw(42);
+  min-width: count-vw(190);
+  text-align: center;
+  @include css3-prefix(transition, .5s);
+
+  &:hover {
+    opacity: .8;
+    color: #fff;
+  }
+
+  @media #{$information-tablet} {
+    border: none;
+    color: #ffca12;
+    font-size: 15px;
+    text-decoration: underline;
+
+    &:after {
+      content: '>';
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+}

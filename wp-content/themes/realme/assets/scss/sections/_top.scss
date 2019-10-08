@@ -1,0 +1,274 @@
+#realme-home-page {
+  .slider-02 {
+    margin-bottom: count-vw(40);
+  }
+
+  .top-w-content {
+    padding: 0 4.16%;
+
+    .clearfix {
+      margin: 0 -10px;
+
+      > div {
+        width: 50%;
+        padding: 0 10px;
+        float: left;
+      }
+    }
+
+    .top-title {
+      color: #939598;
+      font-weight: bold;
+      text-align: center;
+      font-size: count-vw(48);
+      padding: count-vw(29) 0;
+
+      @media #{$information-tablet} {
+        font-size: 18px;
+        padding: 20px 0;
+      }
+    }
+  }
+
+  .top-phone {
+    text-align: center;
+    background-color: #ebebeb;
+    padding-bottom: count-vw(40);
+
+    .top-phone__content {
+      padding-top: 100%;
+      position: relative;
+
+      p {
+        position: absolute;
+      }
+    }
+
+    .top-phone--left {
+      .top-phone__content {
+        p {
+          left: count-vw(120);
+          top: count-vw(630);
+        }
+
+        img {
+          width: count-vw(400);
+          display: block;
+          margin-bottom: count-vw(70);
+        }
+      }
+    }
+
+    .top-phone--right {
+      .top-phone__content {
+        p {
+          top: count-vw(230);
+          right: count-vw(70);
+        }
+
+        img {
+          width: count-vw(444);
+          display: block;
+          margin-bottom: count-vw(45);
+        }
+      }
+    }
+  }
+
+  .top-news {
+    background-color: #ebebeb;
+    padding-bottom: count-vw(115);
+    margin-bottom: count-vw(40);
+
+    .top-news__content {
+      height: count-vw(495);
+      position: relative;
+
+      p {
+        text-align: center;
+        position: absolute;
+        top: count-vw(163);
+        right: count-vw(183);
+      }
+
+      .top-news__text {
+        width: count-vw(638);
+        display: block;
+        margin-bottom: count-vw(24);
+      }
+
+      .top-news__btn {
+        width: count-vw(440);
+      }
+    }
+  }
+
+  .top-leap {
+    background: url('../img/top-leap.jpg');
+    background-size: cover;
+    height: 51vw;
+    @include flex();
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    font-size: count-vw(78);
+    font-weight: bold;
+
+    .see-more-btn {
+      margin-top: count-vw(145);
+    }
+  }
+
+  .style-w-bg {
+    position: relative;
+
+    .style__bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+
+      &.style__bg--sp {
+        display: none;
+      }
+    }
+  }
+
+  /* === RESPONSIVE === */
+  @media #{$information-tablet} {
+    .slider-02 {
+      margin-bottom: 0;
+    }
+
+    .top-w-content {
+      padding: 0 10px;
+
+      .top-title {
+        font-size: 18px;
+        padding: 20px 0;
+      }
+    }
+
+    .top-news {
+      padding-bottom: 0;
+    }
+
+    .top-phone {
+      padding-bottom: 0;
+    }
+  }
+
+  @media #{$information-phone} {
+    .top-w-content {
+      padding: 0;
+
+      .clearfix {
+        margin: 0;
+
+        > div {
+          width: 100%;
+          float: none;
+          padding: 0;
+        }
+      }
+    }
+
+    .top-leap {
+      height: 370px;
+      font-size: 26px;
+    }
+
+    .style-w-bg {
+      .style__bg {
+        &.style__bg--pc {
+          display: none;
+        }
+
+        &.style__bg--sp {
+          display: block;
+        }
+      }
+    }
+
+    .top-news {
+      height: 186.7vw;
+
+      p {
+        top: initial;
+        bottom: 30px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .top-news__text {
+        width: cal-sp(334);
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .top-news__btn {
+        width: cal-sp(250);
+      }
+    }
+
+    .top-phone {
+      .top-phone__content {
+        p {
+
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+
+          > img {
+            position: absolute;
+          }
+
+          .see-more-btn {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            @include css3-prefix(transform, translateX(-50%))
+          }
+        }
+      }
+
+      .top-phone--left {
+        .top-phone__content {
+          p {
+            top: 0;
+            left: 0;
+          }
+
+          img {
+            width: 180px;
+            left: 20px;
+            top: 140px;
+          }
+        }
+      }
+
+      .top-phone--right {
+        box-shadow: 0 0 15px rgba(0,0,0,.16);
+
+        .top-phone__content {
+          p {
+            top: 0;
+            right: 0;
+          }
+
+          img {
+            width: 204px;
+            right: 20px;
+            top: 70px;
+          }
+        }
+      }
+    }
+  }
+}

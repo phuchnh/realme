@@ -1,0 +1,127 @@
+/* ======================
+* Margin And Padding Generator 
+====================== */
+$spaceamounts: (5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 180, 200); // Adjust this to include the pixel amounts you need.
+$sides: (top, bottom, left, right); // Leave this variable alone
+
+@each $space in $spaceamounts {
+  @each $side in $sides {
+    .m#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+  
+    .p#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+}
+
+
+/* ============================
+ * Mixin helper
+ * ============================ */
+@mixin css3-prefix($property, $value) {
+  -webkit-#{$property}: #{$value};
+  -khtml-#{$property} : #{$value};
+  -moz-#{$property}   : #{$value};
+  -ms-#{$property}    : #{$value};
+  -o-#{$property}     : #{$value};
+  #{$property}        : #{$value};
+}
+
+@mixin flex() {
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+
+/* ============================
+ * Color Helper
+ * ============================ */
+
+
+/* ============================
+ * Responsive Supports
+ * ============================ */
+.mb-hide{
+  @media #{$information-hz-phone} {
+    display: none !important;
+  }
+}
+
+.mb-show-bl{
+  display: none !important;
+
+  @media #{$information-hz-phone} {
+    display: block !important;
+  }
+}
+
+.mb-show-ib{
+  display: none !important;
+
+  @media #{$information-hz-phone} {
+    display: inline-block !important;
+  }
+}
+
+
+.mb-show-fl{
+  display: none !important;
+
+  @media #{$information-hz-phone} {
+    display: flex !important;
+  }
+}
+
+
+// function calculator px to vw
+@function count-vw($var){
+  @return $var/1920 * 100 * 1vw
+}
+
+@function cal-sp($var){
+  @return $var/375 * 100 * 1%
+}
+
+@function pxtorem($var) {
+  @return $var/16 * 1rem
+}
+
+// hidden pc, sp class
+.hidden-pc {
+  display: none !important;
+  @media #{$information-tablet} {
+    display: block !important;
+  }
+}
+
+.hidden-sp {
+  @media #{$information-tablet} {
+    display: none !important;
+  }
+}
+
+// class help for color
+.text-white {
+  color: #fff;
+}
+
+.text-black {
+  color: #000;
+}
+
+.mb-hide{
+  @media #{$information-tablet} {
+    display: none !important;
+  }
+}
+
+.mb-show{
+  display: none !important;
+  @media #{$information-tablet} {
+    display: block !important;
+  }
+}
