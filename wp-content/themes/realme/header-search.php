@@ -58,54 +58,18 @@
             <div class="container">
 
                 <div class="place-holder">
-                    Kết quả tìm kiếm
+                    Tìm kiếm sản phẩm
                 </div>
 
-                <ul class="search-result-list">
-                    <li class="result-item">
-                        <a class="link-wrapper">
-                            <div class="phone-img">
-                                <img src="<?php echo THEME_URI; ?> /assets/img/current/header-products/c2.png">
-                            </div>
-                            <p class="phone-name">
-                                Realme c2
-                            </p>
-                        </a>
+                <div class="search-result-list">
+                    <li class="searching-icon">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
                     </li>
+                    <li class="no-result">Không tìm thấy kết quả nào</li>
+                    <ul class="search-result-holder">
 
-                    <li class="result-item">
-                        <a class="link-wrapper">
-                            <div class="phone-img">
-                                <img src="<?php echo THEME_URI; ?> /assets/img/current/header-products/c2.png">
-                            </div>
-                            <p class="phone-name">
-                                Realme c2
-                            </p>
-                        </a>
-                    </li>
-
-                    <li class="result-item">
-                        <a class="link-wrapper">
-                            <div class="phone-img">
-                                <img src="<?php echo THEME_URI; ?> /assets/img/current/header-products/realme 3.png">
-                            </div>
-                            <p class="phone-name">
-                                Realme 3
-                            </p>
-                        </a>
-                    </li>
-
-                    <li class="result-item">
-                        <a class="link-wrapper">
-                            <div class="phone-img">
-                                <img src="<?php echo THEME_URI; ?> /assets/img/current/header-products/realme 3 pro.png">
-                            </div>
-                            <p class="phone-name">
-                                Realme 3 Pro
-                            </p>
-                        </a>
-                    </li>
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
 

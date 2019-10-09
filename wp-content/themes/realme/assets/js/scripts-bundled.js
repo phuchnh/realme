@@ -301,6 +301,10 @@ function () {
 
     this.$searchFrom = $('#search-product-form input');
     this.$searchResultDialog = $('.search-result');
+    this.$searchResultLayout = $('.search-result-list');
+    this.$resultListHolder = $('.search-result-holder');
+    this.isSearching = false;
+    this.debounceHolder = null;
     this.BindEvent();
   }
   /* ===================================
@@ -314,20 +318,96 @@ function () {
       var _this = this;
 
       this.$searchFrom.on('focus', function () {
-        console.log('focus');
-
         _this.$searchResultDialog.slideDown();
       });
       this.$searchFrom.on('blur', function () {
-        console.log('blur');
-
         _this.$searchResultDialog.slideUp();
       });
+      this.SetupSearchBox();
     }
     /* ===================================
      *  METHODS
      * =================================== */
 
+  }, {
+    key: "SetupSearchBox",
+    value: function SetupSearchBox() {
+      var _this2 = this;
+
+      // Prevent User Submit By Pressing Enter Key
+      $('#search-product-form').on('submit', function (e) {
+        e.preventDefault();
+      });
+      this.$searchFrom.on('keyup', function (e) {
+        console.log(e); // Search Term is not empty
+
+        if (e.target.value !== "") {
+          var searchTerm = e.target.value;
+
+          _this2.$searchResultLayout.addClass('is-searching');
+
+          switch (e.keyCode) {
+            // User Press Enter, Search Immediately
+            case 13:
+              console.log('enter key was pressed, do the search');
+
+              _this2.DoSearching(searchTerm);
+
+              break;
+            // User Press Normally, Debounce 500ms before search
+
+            default:
+              clearTimeout(_this2.debounceHolder);
+              _this2.debounceHolder = setTimeout(function () {
+                _this2.DoSearching(searchTerm);
+              }, 700);
+          }
+        } else {
+          // Empty Searching Field
+          _this2.$resultListHolder.find('.result-item').slideUp('fast', function () {
+            _this2.$resultListHolder.find('.result-item').remove();
+          });
+
+          _this2.$searchResultLayout.removeClass('is-searching');
+        }
+      });
+    }
+  }, {
+    key: "DoSearching",
+    value: function DoSearching() {
+      var _this3 = this;
+
+      var searchTerm = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+      if (searchTerm) {
+        console.log("".concat(realmeVietnamVariables.products_api, "?search=").concat(searchTerm));
+        fetch("".concat(realmeVietnamVariables.products_api, "?search=").concat(searchTerm)).then(function (response) {
+          return response.json();
+        }).then(function (data) {
+          console.log(data);
+
+          if (data.length > 1) {
+            _this3.$searchResultLayout.find('.no-result').hide();
+
+            _this3.$resultListHolder.find('.result-item').remove();
+
+            var resultArrayHTML = data.map(function (value, index) {
+              return "<li class=\"result-item\">\n                                <a class=\"link-wrapper\" href=\"".concat(value.link, "\">\n                                    <div class=\"phone-img\">\n                                        <img src=\"").concat(realmeVietnamVariables.root_url, "/assets/img/current/header-products/c2.png\">\n                                    </div>\n                                    <p class=\"phone-name\">\n                                        ").concat(value.title.rendered, "\n                                    </p>\n                                </a>\n                            </li>");
+            }); // After Append HTML into the result holder, slide Down
+
+            _this3.$resultListHolder.append(resultArrayHTML);
+
+            _this3.$searchResultLayout.removeClass('is-searching');
+          } else {
+            _this3.$resultListHolder.find('.result-item').remove();
+
+            _this3.$searchResultLayout.removeClass('is-searching');
+
+            _this3.$searchResultLayout.find('.no-result').show();
+          }
+        });
+      }
+    }
   }]);
 
   return Home;

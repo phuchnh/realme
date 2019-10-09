@@ -524,34 +524,74 @@ body.stop-scroll {
   }
 
   .search-result-list{
-    display: flex;
-    flex-wrap: wrap;
+    position: relative;
+    min-height: 210px;
 
-    .result-item{
-      width: 23%;
-      flex-basis: 23%;
-      text-align: center;
-      padding: 10px;
+    .search-result-holder{
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
 
-      .link-wrapper{
-        cursor:pointer;
+      .result-item{
+        width: 23%;
+        flex-basis: 23%;
+        text-align: center;
+        padding: 10px;
 
-        &:hover{
-          background-color: #EEE;
+        .link-wrapper{
+          cursor:pointer;
+
+          &:hover{
+            background-color: #EEE;
+          }
         }
-      }
 
-      .phone-img{
-        height: 160px;
-
-        img{
+        .phone-img{
           height: 160px;
+
+          img{
+            height: 160px;
+          }
+        }
+
+        .phone-name{
+          margin-top: 5px;
+          margin-bottom: 0;
         }
       }
+    }
 
-      .phone-name{
-        margin-top: 5px;
-        margin-bottom: 0;
+    .no-result{
+      display: none;
+      font-size: 22px;
+    }
+
+    .searching-icon{
+      opacity: 0;
+      visibility: hidden;
+      transition: all ease-in 150ms 20ms;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      background-color: $white;
+    }
+
+    &.is-searching{
+      .searching-icon{
+        opacity: 1;
+        visibility: visible;
+        transition: all ease-out 250ms 20ms;
+        z-index: 3;
+
+        .fa{
+          color: #AAA;
+        }
       }
     }
   }

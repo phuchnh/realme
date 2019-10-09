@@ -3730,24 +3730,52 @@ body.stop-scroll {
     color: #AAA;
     margin-bottom: 20px; }
   .search-result .search-result-list {
-    display: flex;
-    flex-wrap: wrap; }
-    .search-result .search-result-list .result-item {
-      width: 23%;
-      flex-basis: 23%;
-      text-align: center;
-      padding: 10px; }
-      .search-result .search-result-list .result-item .link-wrapper {
-        cursor: pointer; }
-        .search-result .search-result-list .result-item .link-wrapper:hover {
-          background-color: #EEE; }
-      .search-result .search-result-list .result-item .phone-img {
-        height: 160px; }
-        .search-result .search-result-list .result-item .phone-img img {
+    position: relative;
+    min-height: 210px; }
+    .search-result .search-result-list .search-result-holder {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap; }
+      .search-result .search-result-list .search-result-holder .result-item {
+        width: 23%;
+        flex-basis: 23%;
+        text-align: center;
+        padding: 10px; }
+        .search-result .search-result-list .search-result-holder .result-item .link-wrapper {
+          cursor: pointer; }
+          .search-result .search-result-list .search-result-holder .result-item .link-wrapper:hover {
+            background-color: #EEE; }
+        .search-result .search-result-list .search-result-holder .result-item .phone-img {
           height: 160px; }
-      .search-result .search-result-list .result-item .phone-name {
-        margin-top: 5px;
-        margin-bottom: 0; }
+          .search-result .search-result-list .search-result-holder .result-item .phone-img img {
+            height: 160px; }
+        .search-result .search-result-list .search-result-holder .result-item .phone-name {
+          margin-top: 5px;
+          margin-bottom: 0; }
+    .search-result .search-result-list .no-result {
+      display: none;
+      font-size: 22px; }
+    .search-result .search-result-list .searching-icon {
+      opacity: 0;
+      visibility: hidden;
+      transition: all ease-in 150ms 20ms;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      background-color: #FFF; }
+    .search-result .search-result-list.is-searching .searching-icon {
+      opacity: 1;
+      visibility: visible;
+      transition: all ease-out 250ms 20ms;
+      z-index: 3; }
+      .search-result .search-result-list.is-searching .searching-icon .fa {
+        color: #AAA; }
 
 .top-slider {
   /* === RESPONSIVE === */ }

@@ -9,7 +9,13 @@ if ( ! function_exists( 'realme_theme_scripts' ) ) {
 		wp_enqueue_script( 'popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', array( 'jquery-3.3.1' ), '1.0', true );
 		wp_enqueue_script( 'slick', THEME_URI . '/assets/js/slick.min.js', array( 'jquery-3.3.1' ), '1.0', true );
 		wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array( 'jquery-3.3.1' ), '1.0', true );
+
+		// Realme Main Script And Localize Variables
 		wp_enqueue_script( 'realme-scripts', THEME_URI . '/assets/js/scripts-bundled.js', array( 'jquery-3.3.1' ), microtime(), true );
+        wp_localize_script('realme-scripts', 'realmeVietnamVariables', array(
+            'root_url'      => get_site_url(),
+            'products_api'   => get_site_url() . '/wp-json/wp/v2/products'
+        ));
 		wp_enqueue_script( 'realme-search', THEME_URI . '/assets/js/search.js', microtime(), true );
 		wp_enqueue_script( 'realme-custom', THEME_URI . '/assets/js/custom.js', microtime(), true );
 
