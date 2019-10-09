@@ -8,9 +8,9 @@ add_action( 'rest_api_init', function () {
 			);
 			$client = new SoapClient( 'https://warehouse.realmeshop.vn/wss?wsdl' );
 			$result = $client->__soapCall( 'getImeiInfoCheck', $params );
-
 			return $result;
 		},
 	) );
 } );
+
 
