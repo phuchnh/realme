@@ -160,7 +160,7 @@ abstract class Registrable
      * Set Argument by key
      *
      * @param string $key
-     * @param mixed $value
+     * @param string $value
      *
      * @return $this
      */

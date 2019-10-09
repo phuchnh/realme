@@ -3,19 +3,24 @@ namespace TypeRocket\Models;
 
 use ArrayObject;
 use ReflectionClass;
+use ReflectionException;
 use TypeRocket\Database\EagerLoader;
 use TypeRocket\Database\Query;
 use TypeRocket\Database\Results;
+use TypeRocket\Database\ResultsMeta;
 use TypeRocket\Elements\Fields\Field;
 use TypeRocket\Http\Cookie;
 use TypeRocket\Http\Fields;
 use TypeRocket\Models\Contract\Formable;
+use TypeRocket\Models\Traits\Searchable;
 use TypeRocket\Utility\Inflect;
 use TypeRocket\Utility\Str;
 use wpdb;
 
 class Model implements Formable
 {
+    use Searchable;
+
     protected $fillable = [];
     protected $closed = false;
     protected $guard = ['id'];
@@ -43,6 +48,9 @@ class Model implements Formable
     protected $junction = null;
     protected $with = null;
 
+    /** @var array use this for your own custom caching at the model level */
+    protected $dataCache = [];
+
     /**
      * Construct Model based on resource
      */
@@ -57,8 +65,8 @@ class Model implements Formable
 
         try {
             $type = (new ReflectionClass( $this ))->getShortName();
-        } catch (\ReflectionException $e) {
-            wp_die('Model failed');
+        } catch (ReflectionException $e) {
+            wp_die('Model failed: ' . $e->getMessage());
         }
 
         if( ! $this->resource && $type ) {
@@ -749,6 +757,23 @@ class Model implements Formable
     }
 
     /**
+     * Find by ID or IDs
+     *
+     * @param mixed ...$ids
+     * @return mixed|Model
+     */
+    public function find(...$ids)
+    {
+        $ids = is_array($ids[0]) ? $ids[0] : $ids;
+
+        if(count($ids) > 1) {
+            return $this->findAll($ids);
+        }
+
+        return $this->findById($ids[0]);
+    }
+
+    /**
      * Find all
      *
      * @param array|ArrayObject $ids
@@ -775,16 +800,17 @@ class Model implements Formable
     /**
      * Where
      *
-     * @param string $column
-     * @param string $arg1
+     * @param string|array $column
+     * @param string|null $arg1
      * @param null|string $arg2
      * @param string $condition
+     * @param null|int $num
      *
      * @return $this
      */
-    public function where($column, $arg1, $arg2 = null, $condition = 'AND')
+    public function where($column, $arg1 = null, $arg2 = null, $condition = 'AND', $num = null)
     {
-        $this->query->where($column, $arg1, $arg2, $condition);
+        $this->query->where($column, $arg1, $arg2, $condition, $num ?? func_num_args());
 
         return $this;
     }
@@ -794,13 +820,14 @@ class Model implements Formable
      *
      * @param string $column
      * @param string $arg1
-     * @param null|string $arg2
+     * @param null|string $arg2\
+     * @param null|int $num
      *
      * @return Model $this
      */
-    public function orWhere($column, $arg1, $arg2 = null)
+    public function orWhere($column, $arg1, $arg2 = null, $num = null)
     {
-        $this->query->where($column, $arg1, $arg2, 'OR');
+        $this->query->orWhere($column, $arg1, $arg2, $num ?? func_num_args());
 
         return $this;
     }
@@ -960,6 +987,27 @@ class Model implements Formable
     }
 
     /**
+     * Join
+     *
+     * Only selects distinctly the current model's table columns
+     *
+     * @param string $table
+     * @param string $column
+     * @param string $arg1 column or operator
+     * @param null|string $arg2 column if arg1 is set to operator
+     * @param string $type INNER (default), LEFT, RIGHT
+     *
+     * @return $this
+     */
+    public function join($table, $column, $arg1, $arg2 = null, $type = 'INNER')
+    {
+        $this->query->setSelectTable()->distinct();
+        $this->query->join($table, $column, $arg1, $arg2 = null, $type = 'INNER');
+
+        return $this;
+    }
+
+    /**
      * Find by ID or die
      *
      * @param string $id
@@ -1009,12 +1057,13 @@ class Model implements Formable
      * @param string $arg1
      * @param null|string $arg2
      * @param string $condition
+     * @param null|int $num
      *
      * @return Model
      */
-    public function findFirstWhereOrNew($column, $arg1, $arg2 = null, $condition = 'AND')
+    public function findFirstWhereOrNew($column, $arg1, $arg2 = null, $condition = 'AND', $num = null)
     {
-        if($item = $this->where($column, $arg1, $arg2, $condition)->first()) {
+        if($item = $this->where($column, $arg1, $arg2, $condition, $num ?? func_num_args())->first()) {
             return $item;
         };
 
@@ -1028,12 +1077,13 @@ class Model implements Formable
      * @param string $arg1
      * @param null $arg2
      * @param string $condition
+     * @param null|int $num
      *
      * @return object
      * @internal param $id
      */
-    public function findFirstWhereOrDie($column, $arg1, $arg2 = null, $condition = 'AND') {
-        $results = $this->query->findFirstWhereOrDie( $column, $arg1, $arg2, $condition);
+    public function findFirstWhereOrDie($column, $arg1, $arg2 = null, $condition = 'AND', $num = null) {
+        $results = $this->query->findFirstWhereOrDie( $column, $arg1, $arg2, $condition, $num ?? func_num_args());
         return $this->fetchResult( $results );
     }
 
@@ -1054,9 +1104,13 @@ class Model implements Formable
         // Cast Results
         if( $result instanceof Results ) {
             if( $result->class == null ) {
-               $result->class = static::class;
+                $result->class = static::class;
             }
             $result->castResults();
+
+            if($result instanceof ResultsMeta) {
+                $result->initKeyStore();
+            }
         } else {
             $result = $this->castProperties( (array) $result );
         }
@@ -1064,16 +1118,19 @@ class Model implements Formable
         // Eager Loader
         if(!empty($this->with)) {
 
-            if(is_string($this->with)) {
-                $withList = [$this->with];
-            } else {
-                $withList = $this->with ?? [];
-            }
+            $compiledWithList = $this->getWithCompiled();
 
-            foreach ($withList as $withArg) {
-                list($name, $with) = array_pad(explode('.', $withArg, 2), 2, null);
+            foreach ($compiledWithList as $name => $with) {
                 $loader = new EagerLoader();
-                $relation = $this->{$name}();
+                $relation = $this->{$name}()->removeTake()->removeWhere();
+
+                foreach ($with as $index => $value) {
+                    if(is_callable($value)) {
+                        $value($relation);
+                        unset($with[$index]);
+                    }
+                }
+
                 $result = $loader->load([
                     'name' => $name,
                     'relation' => $relation,
@@ -1233,7 +1290,7 @@ class Model implements Formable
     /**
      * Cast Properties
      *
-     * @param string $properties
+     * @param array $properties
      *
      * @return $this
      */
@@ -1250,6 +1307,17 @@ class Model implements Formable
         }
         $this->properties = apply_filters( 'tr_model_cast_fields', $cast, $this );
 
+        $this->afterCastProperties();
+
+        return $this;
+    }
+
+    /**
+     * Run After Cast Properties
+     *
+     * @return $this
+     */
+    protected function afterCastProperties() {
         return $this;
     }
 
@@ -1326,7 +1394,8 @@ class Model implements Formable
             'query' => [
                 'caller' => $this,
                 'class' => $modelClass,
-                'id_foreign' => $id_foreign
+                'id_foreign' => $id_foreign,
+                'scope' => $scope
             ]
         ];
 
@@ -1338,10 +1407,11 @@ class Model implements Formable
      *
      * @param string $modelClass
      * @param null|string $id_local
+     * @param null|callable $scope
      *
      * @return $this|null
      */
-    public function belongsTo($modelClass, $id_local = null)
+    public function belongsTo($modelClass, $id_local = null, $scope = null)
     {
         /** @var Model $relationship */
         $relationship = new $modelClass;
@@ -1351,7 +1421,8 @@ class Model implements Formable
             'query' => [
                 'caller' => $this,
                 'class' => $modelClass,
-                'local_id' => $id_local
+                'local_id' => $id_local,
+                'scope' => $scope
             ]
         ];
 
@@ -1368,10 +1439,11 @@ class Model implements Formable
      *
      * @param string $modelClass
      * @param null|string $id_foreign
+     * @param null|callable $scope
      *
      * @return null|Model
      */
-    public function hasMany($modelClass, $id_foreign = null)
+    public function hasMany($modelClass, $id_foreign = null, $scope = null)
     {
         $id = $this->getID();
 
@@ -1383,12 +1455,17 @@ class Model implements Formable
             'query' => [
                 'caller' => $this,
                 'class' => $modelClass,
-                'id_foreign' => $id_foreign
+                'id_foreign' => $id_foreign,
+                'scope' => $scope
             ]
         ];
 
         if( ! $id_foreign && $this->resource ) {
             $id_foreign = $this->resource . '_id';
+        }
+
+        if(is_callable($scope)) {
+            $scope($relationship);
         }
 
         return $relationship->findAll()->where( $id_foreign, $id );
@@ -1403,10 +1480,11 @@ class Model implements Formable
      * @param string $junction_table
      * @param null|string $id_column
      * @param null|string $id_foreign
+     * @param null|callable $scope
      *
      * @return null|Model
      */
-    public function belongsToMany( $modelClass, $junction_table, $id_column = null, $id_foreign = null )
+    public function belongsToMany( $modelClass, $junction_table, $id_column = null, $id_foreign = null, $scope = null )
     {
         $id = $this->getID();
 
@@ -1448,8 +1526,13 @@ class Model implements Formable
                 'id_column' => $id_column,
                 'id_foreign' => $id_foreign,
                 'where_column' => $where_column,
+                'scope' => $scope
             ]
         ];
+
+        if(is_callable($scope)) {
+            $scope($relationship);
+        }
 
         return  $relationship->reselect($rel_table.'.*')
                              ->where($where_column, $id)
@@ -1703,6 +1786,16 @@ class Model implements Formable
     }
 
     /**
+     * Get Relationships
+     *
+     * @return array
+     */
+    public function getRelationships()
+    {
+        return $this->relationships;
+    }
+
+    /**
      * Get a relationship.
      *
      * If the "attribute" exists as a method on the model, we will just assume
@@ -1823,14 +1916,56 @@ class Model implements Formable
     /**
      * Eager Load With
      *
-     * @param string $name
+     * @param string|array $name
      * @return $this
      */
     public function with($name)
     {
-        $this->with = $name;
+        $with = func_get_args();
+
+        if(is_array($name)) {
+            $with = $name;
+        }
+
+        $this->with = array_filter($with);
 
         return $this;
+    }
+
+    /**
+     * Get With Compiled
+     *
+     * @return array
+     */
+    public function getWithCompiled()
+    {
+        if(is_string($this->with)) {
+            $withList = [$this->with];
+        } else {
+            $withList = $this->with ?? [];
+        }
+
+        $compiledWithList = [];
+
+        foreach ($withList as $withName => $withArg) {
+
+            if(is_callable($withArg)) {
+                list($name, $with) = array_pad(explode('.', $withName, 2), 2, null);
+
+                if($with) {
+                    $compiledWithList[$name][$with] = $withArg;
+                } else {
+                    $compiledWithList[$name][] = $withArg;
+                }
+
+            } else {
+                list($name, $with) = array_pad(explode('.', $withArg, 2), 2, null);
+                $compiledWithList[$name][] = $with;
+            }
+
+        }
+
+        return $compiledWithList;
     }
 
     /**
@@ -1858,6 +1993,59 @@ class Model implements Formable
             $rel = $rel->relationships[$name];
         }
         return $rel;
+    }
+
+    /**
+     * Paginate
+     *
+     * @param int $number
+     * @param null|int $page
+     * @return \TypeRocket\Database\ResultsPaged|null
+     */
+    public function paginate($number = 25, $page = null)
+    {
+        $obj = $this;
+
+        return $this->query->paginate($number, $page, function($results) use ($obj) {
+            return $obj->getQueryResult($results);
+        });
+    }
+
+    /**
+     * To Array
+     *
+     * Get array of model and loaded relationships
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $relationships = [];
+
+        foreach($this->relationships as $key => $rel) {
+            $value = $rel ? $rel->toArray() : null;
+            $relationships[$key] = $value;
+        }
+
+        return array_merge($this->getProperties(), $relationships);
+    }
+
+    /**
+     * To JSON
+     */
+    public function toJson()
+    {
+        return json_encode($this->toArray());
+    }
+
+    /**
+     * Convert the model to its string representation.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->toJson();
     }
 
 }

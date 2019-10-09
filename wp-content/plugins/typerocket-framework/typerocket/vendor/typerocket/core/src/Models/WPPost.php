@@ -5,12 +5,18 @@ use TypeRocket\Core\Config;
 use TypeRocket\Database\Query;
 use TypeRocket\Exceptions\ModelException;
 use TypeRocket\Models\Meta\WPPostMeta;
+use TypeRocket\Models\Traits\MetaData;
+use WP_Post;
 
 class WPPost extends Model
 {
+    use MetaData;
+
     protected $idColumn = 'ID';
     protected $resource = 'posts';
     protected $postType = 'post';
+    protected $searchColumn = 'post_title';
+    protected $wp_post = null;
 
     protected $builtin = [
         'post_author',
@@ -50,21 +56,104 @@ class WPPost extends Model
     }
 
     /**
+     * Get Meta Model Class
+     *
+     * @return string
+     */
+    protected function getMetaModelClass()
+    {
+        return WPPostMeta::class;
+    }
+
+    /**
+     * Get ID Columns
+     *
+     * @return array
+     */
+    protected function getMetaIdColumns()
+    {
+        return [
+            'local' => 'ID',
+            'foreign' => 'post_id',
+        ];
+    }
+
+    /**
+     * After Properties Are Cast
+     *
+     * Create an Instance of WP_Post
+     *
+     * @return Model
+     */
+    protected function afterCastProperties()
+    {
+        if(!$this->wp_post) {
+            $_post = sanitize_post( (object) $this->properties, 'raw' );
+            wp_cache_add( $_post->ID, $_post, 'posts' );
+            $this->wp_post = new WP_Post($_post);
+        }
+
+        return parent::afterCastProperties();
+    }
+
+    /**
+     * Get WP_Post Instance
+     *
+     * @return WP_Post
+     */
+    public function WP_Post() {
+        return $this->wp_post;
+    }
+
+    /**
      * Posts Meta Fields
      *
-     * @param bool $withPrivate
+     * @param bool $withoutPrivate
      *
      * @return null|\TypeRocket\Models\Model
      */
-    public function meta( $withPrivate = false )
+    public function meta( $withoutPrivate = false )
     {
-        $meta = $this->hasMany( WPPostMeta::class, 'post_id' );
-
-        if( ! $withPrivate ) {
-            $meta->where('meta_key', 'NOT LIKE', '\_%');
-        }
+        $meta = $this->hasMany( WPPostMeta::class, 'post_id', function($rel) use ($withoutPrivate) {
+            if( $withoutPrivate ) {
+                $rel->notPrivate();
+            }
+        } );
 
         return $meta;
+    }
+
+    /**
+     * Posts Meta Fields Without Private
+     *
+     * @return null|\TypeRocket\Models\Model
+     */
+    public function metaWithoutPrivate()
+    {
+        return $this->meta( true );
+    }
+
+    /**
+     * Belongs To Taxonomy
+     *
+     * @param string $modelClass
+     * @param string $taxonomy_id the registered taxonomy id: category, post_tag, etc.
+     * @param null|callable $scope
+     *
+     * @return Model|null
+     */
+    public function belongsToTaxonomy($modelClass, $taxonomy_id, $scope = null)
+    {
+        global $wpdb;
+
+        return $this->belongsToMany($modelClass, $wpdb->term_relationships, 'object_id', 'term_taxonomy_id', function($rel) use ($scope, $taxonomy_id) {
+            global $wpdb;
+            $rel->where($wpdb->term_taxonomy .'.taxonomy', $taxonomy_id);
+
+            if(is_callable($scope)) {
+                $scope($rel);
+            }
+        });
     }
 
     /**
@@ -327,7 +416,7 @@ class WPPost extends Model
     /**
      * Slash Builtin Fields
      *
-     * @param string $builtin
+     * @param array $builtin
      * @return mixed
      */
     public function slashBuiltinFields( $builtin ) {

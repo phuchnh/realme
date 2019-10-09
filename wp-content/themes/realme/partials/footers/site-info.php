@@ -39,10 +39,10 @@
       </p>
       <div class="footer__social">
         <a href="https://www.facebook.com/realmeVietnam/">
-          <img src="<?php echo THEME_URI; ?>/assets/img/icon-fb.png" alt=""/>
+          <img src="<?php echo THEME_URI; ?>/img/icon-fb.png" alt=""/>
         </a>
         <a href="https://www.youtube.com/RealmeVietnam">
-          <img src="<?php echo THEME_URI; ?>/assets/img/icon-youtube.png" alt=""/> </a>
+          <img src="<?php echo THEME_URI; ?>/img/icon-youtube.png" alt=""/> </a>
       </div>
       <div class="footer__popup hidden-sp">
         Vietnam / Việt Nam >

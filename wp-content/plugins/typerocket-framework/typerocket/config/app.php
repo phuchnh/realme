@@ -58,6 +58,18 @@ return [
         'form' => '\TypeRocket\Elements\Form'
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Template Engine
+    |--------------------------------------------------------------------------
+    |
+    | The template engine used to build views for the front-end and admin.
+    |
+    */
+    'template_engine' => [
+        'front' => '\TypeRocket\Template\TemplateEngine',
+        'admin' => '\TypeRocket\Template\TemplateEngine',
+    ],
 
     /*
     |--------------------------------------------------------------------------

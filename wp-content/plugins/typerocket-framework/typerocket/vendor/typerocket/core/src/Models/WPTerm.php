@@ -4,9 +4,12 @@ namespace TypeRocket\Models;
 use TypeRocket\Database\Query;
 use TypeRocket\Exceptions\ModelException;
 use TypeRocket\Models\Meta\WPTermMeta;
+use TypeRocket\Models\Traits\MetaData;
 
 class WPTerm extends Model
 {
+    use MetaData;
+
     protected $idColumn = 'term_id';
     protected $resource = 'terms';
     protected $taxonomy = null;
@@ -31,6 +34,29 @@ class WPTerm extends Model
     {
         if($taxonomy) { $this->taxonomy = $taxonomy; }
         parent::__construct();
+    }
+
+    /**
+     * Get Meta Model Class
+     *
+     * @return string
+     */
+    protected function getMetaModelClass()
+    {
+        return WPTermMeta::class;
+    }
+
+    /**
+     * Get ID Columns
+     *
+     * @return array
+     */
+    protected function getMetaIdColumns()
+    {
+        return [
+            'local' => 'term_id',
+            'foreign' => 'term_id',
+        ];
     }
 
     /**
@@ -61,22 +87,13 @@ class WPTerm extends Model
             /** @var \wpdb $wpdb */
             global $wpdb;
             $tt = $wpdb->prefix . 'term_taxonomy';
+            $query->setSelectTable(null);
             $query->select($this->table.'.*', $tt.'.taxonomy', $tt.'.term_taxonomy_id', $tt.'.description');
             $query->join($tt, $tt.'.term_id', $this->table.'.term_id');
             $query->where($tt.'.taxonomy', $this->taxonomy);
         }
 
         return $query;
-    }
-
-    /**
-     * Get Term Meta
-     *
-     * @return null|\TypeRocket\Models\Model
-     */
-    public function meta()
-    {
-        return $this->hasMany( WPTermMeta::class, 'term_id' );
     }
 
     /**
@@ -255,7 +272,7 @@ class WPTerm extends Model
     }
 
     /**
-     * @param string $builtin
+     * @param array $builtin
      * @return mixed
      */
     public function slashBuiltinFields( $builtin ) {
