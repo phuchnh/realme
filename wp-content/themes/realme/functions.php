@@ -21,6 +21,7 @@ include 'core/enqueue.php';
  * Load helpers functions
  */
 include 'core/helpers.php';
+include 'core/imei-check.php';
 
 /**
  * Add custom post type
