@@ -17,6 +17,6 @@ if ( ! function_exists( 'realme_theme_scripts' ) ) {
 		wp_enqueue_style( 'slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css' );
 		wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' );
 		wp_enqueue_style( 'google-font', 'https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Expanded:100,200,300,400,500,600,700,800,900&amp;subset=vietnamese' );
-		wp_enqueue_style( 'realme-styles', THEME_URI . '/assets/css/styles.css', microtime() );
+		wp_enqueue_style( 'realme-styles', THEME_URI . '/assets/css/styles.css', array(), microtime());
 	}
 }
