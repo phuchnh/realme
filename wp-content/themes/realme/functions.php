@@ -23,6 +23,7 @@ include 'core/enqueue.php';
 include 'core/helpers.php';
 include 'core/imei-check.php';
 include 'core/searching.php';
+include 'core/buynow-modal.php';
 
 /**
  * Add custom post type

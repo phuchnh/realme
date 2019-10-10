@@ -2,8 +2,23 @@
 <!-- === MAIN CONTENT === -->
 <div class="page-wrapper" id="product-page">
     <?php
-    $args      = array( 'taxonomy' => 'serie' );
-    $series    = get_terms( $args );
+
+    // Get series list and sorted by the custom field series_order
+    $args      = array(
+        'taxonomy'   => 'serie',
+        'orderby'    => 'meta_value_num',
+        'order'      => 'ASC',
+        'meta_query' => array(
+            array(
+                'key'       => 'series_order',
+                'type'      => 'NUMERIC',
+            )
+        )
+    );
+    $series    = get_terms($args);
+    //var_dump($series);
+
+
     foreach ( $series as $serie ):
         $args = array(
             'post_type' => 'product',
@@ -28,6 +43,15 @@
                 <!-- Slide Wrapper -->
                 <div class="product-slide__wrap">
                     <?php while ( $query->have_posts() ): $query->the_post() ?>
+
+                        <?php
+                        // Product Details
+                        $productDetails = array(
+                            'title'         => get_the_title(),
+                            'product-slug'  => get_post_field('post_name', get_the_ID()),
+                            // TODO: Get the array of shop from Products Post
+                        )
+                        ?>
 
                         <!-- Product Slide Item -->
                         <div class="product-slide__item">
@@ -65,36 +89,17 @@
                                         <a href="#" class="see-more-btn">Xem thêm</a>
 
                                         <!-- Open Buy Now Modal Of The Product -->
-                                        <a href="#" data-toggle="modal" data-target="#product_<?php echo get_the_ID()?>" class="see-more-btn">Mua ngay</a>
-
-                                        <!-- The Modal -->
-                                        <!-- TODO: Rework On The Modal -->
-                                        <div class="modal" id="product_<?php echo get_the_ID()?>"
-                                             tabindex="-1" role="dialog" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <!-- Modal Header -->
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title"><?php echo tr_posts_field( 'product_slogan' ); ?></h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    </div>
-                                                    <!-- Modal body -->
-                                                    <div class="modal-body">
-                                                        <?php echo tr_posts_field( 'product_description' ); ?>
-                                                    </div>
-                                                    <!-- Modal footer -->
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <a class="see-more-btn">Mua ngay</a>
 
                                     </div><!-- See More Link Wrapper -->
 
                                 </div><!-- Product Description -->
 
                             </div><!-- Container -->
+
+                            <!-- The Modal -->
+                            <!-- TODO: Rework On The Modal -->
+                            <?php modalBuilder($productDetails); ?>
 
                         </div><!-- Slide Item -->
                     <?php endwhile; ?>
