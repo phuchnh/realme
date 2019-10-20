@@ -17,7 +17,7 @@ set('repository', 'git@github.com:phuchnh/realme.git');
 set('git_tty', true);
 
 // Shared files/dirs between deploys 
-set('shared_files', ['wp-config.php', '.htaccess']);
+set('shared_files', ['wp-config.php']);
 set('shared_dirs', ['wp-content/uploads']);
 
 // Writable dirs by web server 
