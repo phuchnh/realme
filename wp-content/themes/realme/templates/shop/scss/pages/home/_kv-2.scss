@@ -1,0 +1,201 @@
+.section-kv{
+  .main-content{
+    .product-intro{
+      top: 20.5%;
+      left: 17%;
+      position: absolute;
+      width: 35.5%;
+
+      img{
+        width: 100%;
+      }
+
+      .product-name{
+        position: absolute;
+        color: $yellow;
+        font-size: 1.15em;
+        font-weight: 300;
+
+        .polygon{
+          width: 14px;
+          display: inline-block;
+          margin-right: 3px;
+        }
+
+        &.name-1{
+          top: 83%;
+          left: 8%;
+        }
+
+        &.name-2{
+          top: 83%;
+          left: 29.5%;
+        }
+
+        &.name-3{
+          top: 91.5%;
+          left: 58%;
+        }
+      }
+    }
+
+    .highlight{
+      width: 32%;
+      position: absolute;
+      right: 15%;
+      top: 22%;
+
+      img{
+        width: 100%;
+      }
+
+      .sale-month{
+        font-size: 1.5em;
+        color: $text-color2;
+        font-weight: 700;
+        border: 2px solid $text-color2;
+        padding: 3px 12px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        -webkit-transform: translateY(30%);
+        transform: translateY(30%);
+      }
+    }
+  }
+
+  @media #{$information-laptop}{
+    .main-content {
+      .product-intro {
+        .product-name {
+          font-size: 1em;
+
+          .polygon {
+            width: 12px;
+            margin-right: 2px;
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-sm-laptop}{
+    .main-content {
+      .product-intro {
+        .product-name {
+          font-size: 0.9em;
+
+          .polygon {
+            width: 10px;
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive
+  @media #{$information-tablet}{
+    .main-content{
+      .product-intro{
+        top: 8%;
+        left: 5%;
+        width: 49%;
+
+        img{
+          width: 100%;
+        }
+
+        .product-name{
+          font-size: 0.75em;
+
+          .polygon{
+            width: 9px;
+            margin-right: 2px;
+          }
+
+          &.name-1{
+            top: 83%;
+            left: 6%;
+          }
+
+          &.name-2{
+            top: 83%;
+            left: 30%;
+          }
+
+          &.name-3{
+            top: 91%;
+            left: 59%;
+          }
+        }
+      }
+
+      .highlight{
+        width: 40%;
+        right: 5%;
+        top: 19%;
+
+        .sale-month{
+          font-size: 1em;
+          border: 1px solid $text-color2;
+          padding: 3px 10px;
+        }
+      }
+    }
+  }
+  @media #{$information-phone}{
+    padding-top: 40px;
+    .main-content{
+      .product-intro{
+        top: auto;
+        bottom: 12%;
+        left: 5%;
+        width: 90%;
+
+        .product-name{
+          position: absolute;
+          color: $yellow;
+          font-size: 0.75em;
+          font-weight: 300;
+
+          .polygon{
+            width: 8px;
+            margin-right: 1px;
+          }
+
+          &.name-1{
+            top: 82%;
+            left: 6%;
+          }
+
+          &.name-2{
+            top: 82%;
+            left: 29%;
+          }
+
+          &.name-3{
+            top: 91%;
+            left: 58%;
+          }
+        }
+      }
+
+      .highlight{
+        width: 75%;
+        right: 12.5%;
+        top: 10%;
+
+        img{
+          width: 100%;
+        }
+
+        .sale-month{
+          font-size: 0.9em;
+          font-weight: 700;
+          padding: 3px 8px;
+        }
+      }
+    }
+  }
+}

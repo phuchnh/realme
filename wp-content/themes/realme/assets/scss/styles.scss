@@ -8,8 +8,9 @@
 @import "components/common";
 @import "components/footer";
 @import "components/header";
-@import "components/modal";
+@import "components/buynow_modal";
 @import "components/sliders";
+@import "components/qa-document";
 
 @import "sections/banner";
 @import "sections/top";
@@ -17,3 +18,5 @@
 @import "sections/support";
 @import "sections/about";
 @import "sections/imei";
+@import "sections/service-center";
+@import "common/wordpress-adapt";

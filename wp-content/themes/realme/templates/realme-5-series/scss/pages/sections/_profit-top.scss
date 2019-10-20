@@ -1,0 +1,878 @@
+#realme-5-hot-sale-page {
+  .profit-section {
+    position: relative;
+    height: 112.3vw;
+
+    .profit-top {
+      position: relative;
+      height: 55.75vw;
+
+      .section-background {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .profit-title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        img {
+          width: 100%;
+        }
+
+        .line-1, .line-2 {
+          position: absolute;
+        }
+
+        .line-1 {
+          width: 18.6%;
+          top: 6.3%;
+          left: 26.9%;
+        }
+
+        .line-2 {
+          width: 32.5%;
+          top: 12.2%;
+          left: 33.9%;
+        }
+      }
+
+      .profit-timeline {
+        position: absolute;
+        width: 94.69%;
+        top: 21.2%;
+        left: 3%;
+      }
+
+      .phone-spec-layout {
+        position: absolute;
+        bottom: 0;
+        height: 53.5%;
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        z-index: 2;
+
+        .timeline-1-column,
+        .timeline-2-column {
+          flex-shrink: 0;
+          height: 100%;
+          display: flex;
+        }
+
+        .timeline-1-column {
+          flex-basis: 57%;
+          width: 57%;
+
+          .left-container,
+          .right-container {
+            height: 100%;
+            width: 50%;
+            position: relative;
+          }
+
+          .left-container {
+            .logo {
+              top: 26%;
+              left: 20%;
+            }
+
+            .background {
+              top: 35.4%;
+              left: 16%;
+
+              .spec-img {
+                top: 15%;
+                left: 9.8%;
+              }
+            }
+
+            .phone-img {
+              width: 43.5%;
+              left: 46%;
+              top: 0;
+            }
+
+            .variations {
+              bottom: 16%;
+              right: 9.8%;
+            }
+
+            .price {
+              bottom: -2%;
+              right: 6.3%;
+            }
+          }
+
+          .right-container {
+            .logo {
+              top: 26%;
+              left: 56%;
+            }
+
+            .background {
+              top: 35.4%;
+              left: 40%;
+
+              .spec-img {
+                top: 15%;
+                left: 34.8%;
+                width: 59%;
+              }
+            }
+
+            .phone-img {
+              width: 45.7%;
+              left: 8%;
+              top: 0;
+            }
+
+            .variations {
+              bottom: 16%;
+              right: 38.3%;
+              width: 61.1%;
+            }
+
+            .price {
+              bottom: -2%;
+              right: 44%;
+            }
+          }
+        }
+
+        .timeline-2-column {
+          flex-basis: 43%;
+          width: 43%;
+
+          .phone-spec-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+
+            .logo {
+              top: 22.75%;
+              left: 59.3%;
+            }
+
+            .background {
+              top: 32.4%;
+              left: 32.7%;
+              width: 47%;
+
+              .spec-img {
+                top: 15%;
+                left: 55.8%;
+                width: 38%;
+              }
+            }
+
+            .phone-img {
+              width: 43.1%;
+              left: 13.7%;
+              top: 0;
+            }
+
+            .variations {
+              bottom: 16%;
+              right: 9.8%;
+            }
+
+            .price {
+              bottom: 13%;
+              right: 39.3%;
+              white-space: nowrap;
+
+              p {
+                display: inline-block;
+              }
+            }
+          }
+        }
+
+        .phone-spec-container {
+          .background, .logo, .variations, .price, .phone-img, .spec-img {
+            position: absolute;
+            color: $white;
+
+            img {
+              width: 100%;
+            }
+          }
+
+          .logo {
+            img {
+              width: auto;
+              height: 22.2px;
+            }
+          }
+
+          .phone-img {
+            .phone-img-item {
+              position: absolute;
+              top: 0;
+              left: 0;
+            }
+          }
+
+          .background {
+            width: 46%;
+
+            .spec-img {
+              width: 52%;
+            }
+          }
+
+          .price {
+            font-weight: 700;
+            font-style: italic;
+            text-align: center;
+            width: 50%;
+
+            p {
+              margin: 0;
+            }
+
+            .line-1 {
+              font-size: 14px;
+              line-height: 14px;
+            }
+
+            .line-2 {
+              font-size: 28px;
+              line-height: 32px;
+            }
+
+            .cta-holder{
+              text-align: center;
+
+              .buynow-btn{
+                margin-top: 4px;
+                background-color: #09278b;
+                display: inline-block;
+                color: #ffca12;
+                border: 1px solid #ffca12;
+                border-radius: 5px;
+                height: 36px;
+                line-height: 34px;
+                font-size: 15px;
+                font-style: italic;
+                padding: 0 32px;
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+                cursor: pointer;
+              }
+            }
+          }
+
+          .variations {
+            width: 45.3%;
+
+            .variation-select {
+              display: flex;
+              bottom: 15%;
+              right: 0;
+
+              li:last-child {
+                margin-left: 15px;
+              }
+            }
+          }
+        }
+
+        .phone-img{
+          &.switcher{
+            .phone-img-item{
+              opacity: 0;
+              visibility: hidden;
+              transition: all ease-in 150ms;
+            }
+
+            &.item-1-active{
+              .phone-img-item.item-1{
+                opacity: 1;
+                visibility: visible;
+                transition: all ease-out 300ms;
+              }
+            }
+
+            &.item-2-active{
+              .phone-img-item.item-2{
+                opacity: 1;
+                visibility: visible;
+                transition: all ease-out 300ms;
+              }
+            }
+          }
+        }
+
+        .variations{
+          .variation-item{
+            opacity: 0.5;
+
+            &.active{
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-laptop}{
+    .profit-section {
+      .profit-top {
+        .phone-spec-layout {
+          .phone-spec-container {
+            .price {
+              width: 50%;
+
+              p {
+                margin: 0;
+              }
+
+              .line-1 {
+                font-size: 12px;
+                line-height: 12px;
+              }
+
+              .line-2 {
+                font-size: 22px;
+                line-height: 22px;
+                white-space: nowrap;
+              }
+
+              .cta-holder{
+                text-align: center;
+
+                .buynow-btn{
+                  margin-top: 3px;
+                  border-radius: 5px;
+                  height: 34px;
+                  line-height: 32px;
+                  font-size: 14px;
+                  padding: 0 28px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-sm-laptop}{
+    .profit-section {
+      .profit-top {
+        .phone-spec-layout {
+          .phone-spec-container {
+            .price {
+              width: 50%;
+
+              p {
+                margin: 0;
+              }
+
+              .line-1 {
+                font-size: 12px;
+                line-height: 12px;
+              }
+
+              .line-2 {
+                font-size: 20px;
+                line-height: 20px;
+              }
+
+              .cta-holder{
+                .buynow-btn{
+                  margin-top: 3px;
+                  border-radius: 5px;
+                  height: 32px;
+                  line-height: 30px;
+                  font-size: 13px;
+                  padding: 0 25px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* === RESPONSIVE === */
+  @media #{$information-tablet}{
+    .profit-section{
+      height: 487.109375vw;
+      background-color: #000a38;
+
+      background-image: url(../../img/profit-bg-mb.jpg);
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+
+      .profit-top-mb{
+        position: relative;
+
+        .profit-title{
+          position: relative;
+          height: 22vw;
+
+          .line-1, .line-2{
+            position: absolute;
+          }
+
+          .line-1{
+            top: 30.8%;
+            left: 9.6%;
+            width: 37.75%;
+          }
+
+          .line-2{
+            top: 61%;
+            width: 67.3%;
+            left: 23.5%;
+          }
+        }
+
+        .profit-content{
+          .profit-frame{
+            position: relative;
+            margin-top: 4.4vw;
+            left: 3vw;
+            width: 91%;
+          }
+
+          .profit-milestone{
+            position: absolute;
+            width: 65%;
+            height: 85vw;
+
+            .logo, .background, .phone-img, .price, .variations{
+              position: absolute;
+            }
+
+            .price{
+              color: $white;
+              font-style: italic;
+              font-weight: 700;
+              text-align: center;
+
+              .line-1{
+                font-size: 24px;
+                line-height: 24px;
+              }
+
+              .line-2{
+                font-size: 44px;
+                line-height: 48px;
+              }
+            }
+
+            .variations{
+              width: 90%;
+
+              .variation-select{
+                display: flex;
+                justify-content: center;
+
+                .variation-item{
+                  margin: 0 2vw;
+
+                  img{
+                    height: 3.8vw;
+                  }
+                }
+              }
+            }
+
+            .background{
+              .spec-img{
+                position: absolute;
+              }
+            }
+
+            .phone-img{
+              .item-1, .item-2{
+                position: absolute;
+                top: 0;
+                left: 0;
+              }
+            }
+
+            .logo{
+              width: 30%;
+            }
+
+            &.milestone-1{
+              top: 10%;
+              right: 5%;
+
+              .logo{
+                width: 28%;
+                top: 26.5%;
+                left: 9.1%;
+              }
+
+              .phone-img{
+                width: 52%;
+                left: 44%;
+                top: 1%;
+              }
+
+              .background{
+                width: 56%;
+                left: 3.3%;
+                top: 35%;
+
+                .spec-img{
+                  top: 16%;
+                  width: 51%;
+                  left: 12%;
+                }
+              }
+
+              .variations{
+                bottom: 17%
+              }
+
+              .price{
+                bottom: 1.5%;
+                width: 94%;
+              }
+            }
+
+            &.milestone-2{
+              top: 40.5%;
+              right: 5%;
+
+              .logo{
+                width: 28%;
+                top: 26.5%;
+                left: 9.1%;
+              }
+
+              .phone-img{
+                width: 55%;
+                left: 3%;
+                top: 2%;
+              }
+
+              .background{
+                width: 56%;
+                left: 40.3%;
+                top: 36%;
+
+                .spec-img{
+                  top: 16%;
+                  width: 57%;
+                  left: 36%;
+                }
+              }
+
+              .variations{
+                width: 100%;
+                bottom: 14%
+              }
+
+              .price{
+                bottom: -1%;
+                width: 95%;
+              }
+            }
+
+
+            &.milestone-3{
+              top: 77%;
+              right: 5%;
+              height: 60vw;
+
+              .logo{
+                width: 28%;
+                top: 27.5%;
+                left: 67.5%;
+              }
+
+              .phone-img{
+                width: 61%;
+                left: 3%;
+                top: 2%;
+              }
+
+              .background{
+                width: 101%;
+                left: -5.3%;
+                top: 37.3%;
+
+                .spec-img{
+                  top: 15%;
+                  width: 25%;
+                  left: 71.4%;
+                }
+              }
+
+              .variations{
+                bottom: 17%
+              }
+
+              .price{
+                bottom: 3%;
+
+                p{
+                  display: inline-block;
+
+                  &.line-1{
+                    font-size: 16px;
+                  }
+
+                  &.line-2{
+                    font-size: 28px;
+                  }
+                }
+              }
+            }
+          }
+
+          .phone-img{
+            &.switcher{
+              .phone-img-item{
+                opacity: 0;
+                visibility: hidden;
+                transition: all ease-in 150ms;
+              }
+
+              &.item-1-active{
+                .phone-img-item.item-1{
+                  opacity: 1;
+                  visibility: visible;
+                  transition: all ease-out 300ms;
+                }
+              }
+
+              &.item-2-active{
+                .phone-img-item.item-2{
+                  opacity: 1;
+                  visibility: visible;
+                  transition: all ease-out 300ms;
+                }
+              }
+            }
+          }
+
+          .variations{
+            .variation-item{
+              opacity: 0.5;
+
+              &.active{
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Special Milestones
+  @media (max-width: 660px) {
+    .profit-section{
+      .profit-top-mb{
+        .profit-content{
+          .profit-milestone{
+            .price{
+              .line-1{
+                font-size: 22px;
+                line-height: 23px;
+              }
+
+              .line-2{
+                font-size: 38px;
+                line-height: 44px;
+              }
+            }
+
+            .variations{
+              .variation-select{
+                .variation-item{
+                  margin: 0 1.8vw;
+
+                  img{
+                    height: 3.5vw;
+                  }
+                }
+              }
+            }
+
+            &.milestone-3{
+              .price{
+                bottom: 3%;
+
+                p{
+                  &.line-1{
+                    font-size: 15px;
+                  }
+
+                  &.line-2{
+                    font-size: 26px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 540px) {
+    .profit-section{
+      .profit-top-mb{
+        .profit-content{
+          .profit-milestone{
+            .price{
+              .line-1{
+                font-size: 19px;
+                line-height: 20px;
+              }
+
+              .line-2{
+                font-size: 32px;
+                line-height: 36px;
+              }
+            }
+
+            .variations{
+              .variation-select{
+                .variation-item{
+                  margin: 0 1.8vw;
+
+                  img{
+                    height: 3.4vw;
+                  }
+                }
+              }
+            }
+
+            &.milestone-3{
+              .price{
+                p{
+                  display: inline-block;
+
+                  &.line-1{
+                    font-size: 15px;
+                  }
+
+                  &.line-2{
+                    font-size: 25px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-phone} {
+    .profit-section{
+      .profit-top-mb{
+        .profit-content{
+          .profit-milestone{
+            .price{
+              .line-1{
+                font-size: 15px;
+                line-height: 17px;
+              }
+
+              .line-2{
+                font-size: 25px;
+                line-height: 29px;
+              }
+            }
+
+            .variations{
+              .variation-select{
+                .variation-item{
+                  margin: 0 1.8vw;
+
+                  img{
+                    height: 3.4vw;
+                  }
+                }
+              }
+            }
+
+            &.milestone-3{
+              .price{
+                p{
+                  &.line-1{
+                    font-size: 13px;
+                  }
+
+                  &.line-2{
+                    font-size: 20px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-sm-phone} {
+    .profit-section{
+      .profit-top-mb{
+        .profit-content{
+          .profit-milestone{
+            .price{
+              .line-1{
+                font-size: 13px;
+                line-height: 15px;
+              }
+
+              .line-2{
+                font-size: 20px;
+                line-height: 25px;
+              }
+            }
+
+            .variations{
+              .variation-select{
+                .variation-item{
+                  margin: 0 1vw;
+
+                  img{
+                    height: 4.5vw;
+                  }
+                }
+              }
+            }
+
+            &.milestone-3{
+              .price{
+                p{
+                  &.line-1{
+                    font-size: 11px;
+                  }
+
+                  &.line-2{
+                    font-size: 16px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

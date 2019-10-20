@@ -22,6 +22,9 @@
     foreach ( $series as $serie ):
         $args = array(
             'post_type' => 'product',
+            'orderby'       => 'meta_value_num',
+            'meta_key'      => 'product_priority',
+            'order'         => 'ASC',
             'tax_query' => array(
                 array(
                     'taxonomy' => 'serie',
@@ -43,15 +46,6 @@
                 <!-- Slide Wrapper -->
                 <div class="product-slide__wrap">
                     <?php while ( $query->have_posts() ): $query->the_post() ?>
-
-                        <?php
-                        // Product Details
-                        $productDetails = array(
-                            'title'         => get_the_title(),
-                            'product-slug'  => get_post_field('post_name', get_the_ID()),
-                            // TODO: Get the array of shop from Products Post
-                        )
-                        ?>
 
                         <!-- Product Slide Item -->
                         <div class="product-slide__item">
@@ -86,10 +80,19 @@
                                     <div class="product-slide__item__desc-05">
 
                                         <!-- Link To Product Landing Page -->
-                                        <a href="#" class="see-more-btn">Xem thêm</a>
+                                        <?php
+                                          $permalink = get_permalink(tr_posts_field('product_landingpage'));
+                                        ?>
+                                        <?php if($permalink) : ?>
+                                            <a href="<?php echo $permalink; ?>" class="see-more-btn">Xem thêm</a>
+                                        <?php endif; ?>
 
-                                        <!-- Open Buy Now Modal Of The Product -->
-                                        <a class="see-more-btn">Mua ngay</a>
+
+                                        <?php if(tr_posts_field('product_shops')) : ?>
+                                            <!-- Open Buy Now Modal Of The Product -->
+                                            <a class="see-more-btn open-buynow-modal"
+                                               data-modal-target="modal-preorder-<?php echo get_post_field('post_name', get_the_ID()); ?>">Mua ngay</a>
+                                        <?php endif; ?>
 
                                     </div><!-- See More Link Wrapper -->
 
@@ -97,14 +100,27 @@
 
                             </div><!-- Container -->
 
-                            <!-- The Modal -->
-                            <!-- TODO: Rework On The Modal -->
-                            <?php modalBuilder($productDetails); ?>
-
                         </div><!-- Slide Item -->
                     <?php endwhile; ?>
 
                 </div><!-- Slide Wrapper -->
+
+
+                <?php while ( $query->have_posts() ): $query->the_post() ?>
+
+                        <?php
+                        // Product Details
+                        $productDetails = array();
+                        $productDetails = array(
+                            'title'         => get_the_title(),
+                            'product_slug'  => get_post_field('post_name', get_the_ID()),
+                            // TODO: Get the array of shop from Products Post
+                            'ka_list'      => tr_posts_field('product_shops'),
+                        )
+                        ?>
+                            <!-- The Modal -->
+                            <?php modalBuilder($productDetails); ?>
+                        <?php endwhile;?>
             <?php endif; ?>
 
         </section><!-- Section Wrapper -->

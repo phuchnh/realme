@@ -71,8 +71,8 @@ export default class Home {
 
     DoSearching(searchTerm = null){
         if(searchTerm){
-            console.log(`${realmeVietnamVariables.products_api}?search=${searchTerm}`);
-            fetch(`${realmeVietnamVariables.products_api}?search=${searchTerm}`)
+            console.log(`${realmeVietnamVariables.products_api}?term=${searchTerm}`);
+            fetch(`${realmeVietnamVariables.products_api}?term=${searchTerm}`)
                 .then(response => {
                     return response.json();
                 })
@@ -85,12 +85,12 @@ export default class Home {
 
                         let resultArrayHTML = data.map((value, index) => {
                             return `<li class="result-item">
-                                <a class="link-wrapper" href="${value.link}">
+                                <a class="link-wrapper" href="${value.landingpage}">
                                     <div class="phone-img">
-                                        <img src="${realmeVietnamVariables.root_url}/assets/img/current/header-products/c2.png">
+                                        <img src="${value.thumbnail}">
                                     </div>
                                     <p class="phone-name">
-                                        ${value.title.rendered}
+                                        ${value.title}
                                     </p>
                                 </a>
                             </li>`;

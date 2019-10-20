@@ -1,0 +1,16 @@
+// Wordpress Admin bar from desktop
+.admin-bar{
+  #page-header{
+    padding-top: 32px;
+
+    @media #{$information-tablet}{
+      padding-top: 46px;
+    }
+
+    @media #{$information-phone}{
+      &.menu-scroll{
+        padding-top: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,449 @@
+.section-product{
+  color: #190E39;
+  padding: 60px 0;
+
+  .title{
+    text-align: center;
+    font-size: 2.25em;
+    font-weight: 400;
+  }
+
+  .product-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+
+    &__image{
+      width: 24%;
+      flex-basis: 24%;
+
+      img{
+        width: 100%;
+      }
+    }
+
+    &__detail{
+      width: 38%;
+      flex-basis: 38%;
+      padding-left: 20px;
+
+      .product-name{
+        margin-bottom: 8px;
+        img{
+          height: 26px;
+        }
+      }
+
+      .context{
+        margin-bottom: 0;
+        font-size: 1.15em;
+        font-weight: 800;
+      }
+
+      .product-feature{
+        padding: 0 30px 0 0;
+        margin: 10px 0 0;
+        display: flex;
+        list-style: none;
+
+        @media #{$information-phone}{
+          padding: 0;
+        }
+
+        .feature-item{
+          display: flex;
+          font-size: 0.7em;
+          font-weight: 600;
+          white-space: nowrap;
+          flex-basis: 33.33%;
+
+          @media #{$information-phone}{
+            font-size: 0.55em;
+          }
+        }
+
+        &.style-1{
+          .feature-item{
+            flex-basis: 36%;
+
+            .feature-logo{
+              margin-right: 7px;
+
+              @media #{$information-phone}{
+                height: 25px;
+
+                img{
+                  height: 100%;
+                }
+              }
+            }
+
+            .feature-name{
+              position: relative;
+              bottom: 2px;
+            }
+          }
+        }
+
+        &.style-2{
+          .feature-item{
+            flex-direction: column;
+            text-align: center;
+
+            .feature-logo{
+              margin-bottom: 5px;
+            }
+
+            .feature-name{
+              margin: 0;
+            }
+
+            &:nth-child(2){
+              border: 1px solid #190E39;
+              border-top: none;
+              border-bottom: none;
+            }
+          }
+        }
+      }
+
+      &__versions{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 20px;
+
+        .version-name, .version-price{
+          margin: 0;
+          font-size: 1.15em;
+        }
+
+        .version-name{
+          font-weight: 400;
+        }
+        .version-price{
+          font-weight: 800;
+        }
+      }
+    }
+
+    &__video{
+      width: 40%;
+      flex-basis: 40%;
+      height: 280px;
+      background-color: #222;
+      position: relative;
+
+      #video-container,
+      #video-container-realme-3-pro,
+      #video-container-realme-3{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .video-overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,1);
+        z-index: 2;
+        color: $white;
+        background-size: cover;
+
+        &:before{
+          content: '';
+          background-color: rgba(0,0,0,0.35);
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+        }
+
+        .play-btn{
+          position: absolute;
+          font-size: 2em;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          cursor:pointer;
+          z-index: 2;
+          text-shadow: 0 0 5px rgba(0,0,0,0.7);
+        }
+
+        .bottom-controller{
+          position: absolute;
+          right: 25px;
+          bottom: 10px;
+          font-size: 1.45em;
+          opacity: 0;
+          visibility: hidden;
+          z-index: 2;
+
+          .fa{
+            margin: 0 5px;
+            cursor: pointer;
+
+            &:hover{
+              color: $yellow;
+            }
+          }
+
+          .mute-btn{
+            position: relative;
+
+            .fa-volume-up{
+              position: absolute;
+              top: 4px;
+              left: 0;
+            }
+
+            &.muted{
+              .fa-volume-up{
+                opacity: 0;
+              }
+            }
+          }
+        }
+      }
+
+      &.is-playing{
+        .video-overlay {
+          background-color: rgba(0,0,0,0);
+          background-image: none !important;
+
+          &:before{
+            display: none;
+          }
+
+          .bottom-controller {
+            opacity: 1;
+            visibility: visible;
+          }
+
+          .play-btn {
+            opacity: 0;
+            visibility: hidden;
+            text-shadow: none;
+          }
+        }
+      }
+    }
+
+    .cta-wrapper{
+      &.wrapper-2{
+        display: none;
+      }
+    }
+
+    &.realme-3-pro{
+      margin-top: 80px;
+      .product-info__image{
+        -webkit-transform: scale(1.07) translateX(-2%);
+        transform: scale(1.07) translateX(-2%);
+      }
+    }
+  }
+
+  @media #{$information-tablet}{
+    padding: 40px 0;
+
+    .title{
+      text-align: center;
+      font-size: 2em;
+      font-weight: 400;
+    }
+
+    .product-info{
+      flex-wrap: wrap;
+
+      &__image{
+        width: 100%;
+        flex-basis: 100%;
+        text-align: center;
+        padding: 30px 0 40px;
+
+        img{
+          width: 50%;
+        }
+      }
+
+      &__detail{
+        width: 100%;
+        flex-basis: 100%;
+        padding: 0 20%;
+        padding-bottom: 30px;
+
+        .cta-wrapper{
+          display: none;
+        }
+
+        .product-name{
+          font-size: 2em;
+          font-weight: 300;
+          margin-bottom: 10px;
+        }
+
+        .context{
+          margin-bottom: 0;
+          font-size: 1.15em;
+          font-weight: 800;
+        }
+
+        &__versions{
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          margin-bottom: 20px;
+
+          .version-name, .version-price{
+            margin: 0;
+            font-size: 1.15em;
+          }
+
+          .version-name{
+            font-weight: 400;
+          }
+          .version-price{
+            font-weight: 800;
+          }
+        }
+      }
+
+      &__video{
+        width: calc(100% - 60px);
+        flex-basis: calc(100% - 60px);
+        height: 380px;
+        margin: auto;
+      }
+
+      .cta-wrapper{
+        text-align: center;
+
+        &.wrapper-2{
+          display: block;
+          width: 100%;
+          padding: 30px 0 0;
+        }
+      }
+    }
+  }
+
+  @media #{$information-phone}{
+    padding: 30px 0 20px;
+
+    .title{
+      font-size: 1.75em;
+    }
+
+    .product-info{
+      &__image{
+        width: 100%;
+        flex-basis: 100%;
+        padding: 20px 0 30px;
+
+        img{
+          width: 80%;
+        }
+      }
+
+      &__detail{
+        width: 100%;
+        flex-basis: 100%;
+        padding: 0 15px;
+        padding-bottom: 30px;
+
+        .product-name{
+          font-size: 1.75em;
+          margin-bottom: 8px;
+        }
+
+        .context{
+          font-size: 1.05em;
+        }
+
+        &__versions{
+          margin-bottom: 10px;
+
+          .version-name, .version-price{
+            margin: 0;
+            font-size: 1.05em;
+          }
+        }
+      }
+
+      &__video{
+        width: calc(100% - 30px);
+        flex-basis: calc(100% - 30px);
+        height: 260px;
+      }
+
+      .cta-wrapper{
+        &.wrapper-2{
+          padding: 20px 0 0;
+        }
+      }
+    }
+  }
+
+  @media #{$information-sm-phone}{
+    padding: 25px 0 10px;
+
+    .title{
+      font-size: 1.6em;
+    }
+
+    .product-info{
+      &__image{
+        padding: 15px 0 20px;
+
+        img{
+          width: 85%;
+        }
+      }
+
+      &__detail{
+        width: 100%;
+        flex-basis: 100%;
+        padding: 0 10px;
+        padding-bottom: 15px;
+
+        .product-name{
+          font-size: 1.7em;
+          margin-bottom: 8px;
+        }
+
+        .context{
+          font-size: 1em;
+        }
+
+        &__versions{
+          margin-bottom: 10px;
+
+          .version-name, .version-price{
+            margin: 0;
+            font-size: 1em;
+          }
+        }
+      }
+
+      &__video{
+        width: calc(100% - 20px);
+        flex-basis: calc(100% - 20px);
+        height: 200px;
+      }
+
+      .cta-wrapper{
+        &.wrapper-2{
+          padding: 15px 0 0;
+        }
+      }
+    }
+  }
+}

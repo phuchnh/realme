@@ -1,0 +1,100 @@
+#service-center{
+  padding-top: 140px;
+
+  .section-service-center{
+    .title{
+      text-align: center;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    .service-center-layout{
+      .search-boxes{
+        margin: 40px 0;
+
+        .form-control{
+          width: 320px;
+          max-width: 90%;
+          margin: auto;
+        }
+      }
+
+      .result-holder{
+        margin-bottom: 100px;
+
+        .result-title{
+          margin-bottom: 30px;
+
+          h1,h2,h3,h4,h5{
+            font-size: 32px;
+            color: #333;
+            margin: 0 0 5px;
+            text-align: center;
+          }
+
+          p{
+            color: #818181;
+            font-size: 1em;
+            text-align: center;
+          }
+        }
+
+        .center-result-list{
+          display: flex;
+          flex-wrap: wrap;
+          width: 1200px;
+          max-width: 100%;
+          margin: auto;
+          padding: 0 15px;
+
+          .center-item{
+            width: 31%;
+            margin: 0 1.11%;
+            flex-shrink: 0;
+            border: 1px solid rgba(0,0,0,.15);
+            border-radius: 3px;
+
+            .center-head{
+              background-color: #fbfbfb;
+              padding: 22px 20px 25px;
+              border-bottom: 1px solid rgba(0,0,0,.15);
+
+              .center-title{
+                font-size: 15px;
+                line-height: 24px;
+                color: #333;
+              }
+            }
+
+            .center-body{
+              padding: 22px 20px 25px;
+
+              .detail-block{
+                margin-bottom: 25px;
+
+                span{
+                  display: block;
+                  font-size: 0.8em;
+                  margin-bottom: 0.15em;
+
+                  &.label{
+                    font-weight: 600;
+                  }
+
+                  &.context{
+                    opacity: 0.6;
+                    height: 3.25em;
+                    overflow: hidden;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

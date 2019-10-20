@@ -24,6 +24,7 @@ include 'core/helpers.php';
 include 'core/imei-check.php';
 include 'core/searching.php';
 include 'core/buynow-modal.php';
+include 'core/page-menu.php';
 
 /**
  * Add custom post type

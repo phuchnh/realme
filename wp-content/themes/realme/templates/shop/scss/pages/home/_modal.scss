@@ -1,0 +1,603 @@
+.modal{
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  transition: all 10ms 300ms ease-in;
+
+  &__overlay{
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.6);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 300ms 120ms ease-in;
+  }
+
+  &__dialog{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-45%, -50%);
+    transform: translate(-45%, -50%);
+    z-index: 2;
+    width: 960px;
+    opacity: 0;
+    transition: all 200ms 20ms ease-out;
+
+    .close-button{
+      position: absolute;
+      right: 0;
+      top: -40px;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+
+      img{
+        width: 100%;
+      }
+    }
+
+    &__bg{
+      img{
+        width: 100%;
+      }
+    }
+
+    &__content{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      color: $white;
+
+      .login-form, .register-form{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+
+        .title{
+          text-align: center;
+          font-weight: 400;
+          font-size: 1.5em;
+          margin: 0;
+        }
+
+        .bottom-txt{
+          text-align: center;
+          padding: 30px 0 30px;
+          font-size: 1.15em;
+
+          .link{
+            color: $yellow;
+            cursor:pointer;
+          }
+        }
+
+        .form-wrapper{
+          height: 190px;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          align-items: center;
+          padding: 20px 0 0;
+
+          .register-msg{
+            width: 70%;
+            margin: 0 auto;
+            text-align: center;
+          }
+
+          .form-row{
+            display: flex;
+            margin-bottom: 8px;
+
+            input{
+              width: 220px;
+              height: 34px;
+              line-height: 24px;
+              padding: 5px 12px;
+              border-radius: 3px;
+              border: 1px solid #ddd;
+              margin-right: 10px;
+            }
+          }
+
+          label{
+            height: 34px;
+            line-height: 34px;
+            width: 130px;
+            text-align: right;
+            padding-right: 10px;
+          }
+
+          .cta-wrapper{
+            .cta{
+              height: 34px;
+              line-height: 34px;
+              font-size: 0.9em;
+              padding: 0 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.show-modal{
+    visibility: visible;
+    transition: all 0ms 0ms ease-in;
+
+    .modal__overlay{
+      opacity: 1;
+      transition: all 300ms 20ms ease-out;
+    }
+
+    .modal__dialog{
+      opacity: 1;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      transition: all 300ms 150ms ease-out;
+    }
+  }
+
+  .register-msg{
+    color: $yellow;
+    margin-bottom: 3px;
+  }
+
+  /* Responsive */
+  @media #{$information-tablet}{
+    &__dialog{
+      width: 90%;
+      opacity: 0;
+      -webkit-transform: translate(-50%, -35%);
+      transform: translate(-50%, -35%);
+
+      &__content{
+        .login-form, .register-form{
+
+          .form-wrapper{
+            height: 140px;
+            padding: 10px 0 0;
+
+            .form-row{
+              margin-bottom: 5px;
+
+              input{
+                width: 150px;
+                height: 30px;
+                line-height: 20px;
+                padding: 5px 12px;
+                border-radius: 3px;
+                margin-right: 10px;
+              }
+            }
+
+            label{
+              height: 30px;
+              line-height: 30px;
+              width: 120px;
+              padding-right: 10px;
+              white-space: nowrap;
+            }
+
+            .cta-wrapper{
+              .cta{
+                height: 30px;
+                line-height: 30px;
+                font-size: 0.9em;
+                padding: 0 10px;
+              }
+            }
+          }
+
+          .bottom-txt{
+            text-align: center;
+            padding: 20px 0 20px;
+            font-size: 1em;
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-phone}{
+    &__dialog{
+      width: 70%;
+      top: 80px;
+      left: 50%;
+      -webkit-transform: translate(-50%, -5%);
+      transform: translate(-50%, -5%);
+
+      .close-button{
+        top: -25px;
+        width: 22px;
+        height: 22px;
+      }
+
+      &__content{
+        .login-form, .register-form{
+
+          .title{
+            font-size: 1.3em;
+          }
+
+          .bottom-txt{
+            padding: 30px 0 30px;
+            font-size: 0.85em;
+          }
+
+          .form-wrapper{
+            height: 80vw;
+
+            .register-msg{
+              width: 100%;
+              padding: 0 30px;
+            }
+
+            .form-row{
+              margin-bottom: 12px;
+              padding: 0 30px;
+              flex-wrap: wrap;
+
+              input{
+                width: 100%;
+                height: 32px;
+                line-height: 22px;
+                padding: 5px 10px;
+                border-radius: 3px;
+                margin-right: 10px;
+              }
+
+              .cta-wrapper{
+                width: 100%;
+                text-align: center;
+              }
+
+            }
+
+            label{
+              height: 32px;
+              line-height: 32px;
+              width: 100%;
+              text-align: center;
+              padding-right: 10px;
+              font-size: 1.2em;
+            }
+
+            .cta-wrapper{
+              margin-top: 15px;
+              text-align: center;
+              .cta{
+                height: 34px;
+                line-height: 34px;
+                font-size: 0.9em;
+                padding: 0 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.show-modal{
+      .modal__dialog{
+        -webkit-transform: translate(-50%, 0%);
+        transform: translate(-50%, 0%);
+      }
+    }
+  }
+
+  @media #{$information-sm-phone}{
+    &__overlay{
+      opacity: 1;
+    }
+
+    &__dialog{
+      width: 70%;
+      top: 70px;
+
+      .close-button{
+        top: -22px;
+        width: 20px;
+        height: 20px;
+      }
+
+      &__content{
+        .login-form, .register-form{
+
+          .title{
+            font-size: 1.15em;
+          }
+
+          .bottom-txt{
+            padding: 25px 0 25px;
+            font-size: 0.75em;
+          }
+
+          .form-wrapper{
+            height: 80vw;
+
+            .register-msg{
+              padding: 0 25px;
+            }
+
+            .form-row{
+              margin-bottom: 12px;
+              padding: 0 25px;
+
+              input{
+                height: 30px;
+                line-height: 20px;
+                padding: 5px 10px;
+                border-radius: 3px;
+                margin-right: 10px;
+              }
+            }
+
+            label{
+              height: 30px;
+              line-height: 30px;
+              width: 100%;
+              font-size: 1em;
+            }
+
+            .cta-wrapper{
+              margin-top: 15px;
+              .cta{
+                height: 30px;
+                line-height: 30px;
+                font-size: 0.75em;
+                padding: 0 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal_how-to-play {
+  color: $white;
+
+  .modal__context{
+    position: absolute;
+    background-color: rgba(33,23,64,0.8);
+    width: 1200px;
+    max-width: 95%;
+    height: 80vh;
+    top: 50%;
+    left: 50%;
+    z-index: 4;
+    opacity: 0;
+    -webkit-transform: translate(-50%, -35%);
+    transform: translate(-50%, -35%);
+    padding: 90px 65px;
+    transition: all 200ms 20ms ease-out;
+
+    &.align-center{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .content-wrapper{
+      max-height: 100%;
+      overflow-y: auto;
+      padding-right: 20px;
+
+      /* width */
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+        background: rgba(23,14,50,0.9);
+        border-radius: 4px;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: $yellow;
+        border-radius: 4px;
+      }
+
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      p{
+        font-size: 1.25em;
+        line-height: 1.6em;
+        margin-bottom: 30px;
+      }
+
+      h4{
+        font-size: 1.75em;
+        margin: 0 0 10px;
+        color: $yellow;
+        font-weight: 400;
+      }
+    }
+
+    .close-rule{
+      position: absolute;
+      right: 40px;
+      top: 30px;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media #{$information-laptop}{
+      padding: 80px 60px;
+
+      .content-wrapper{
+        padding-right: 15px;
+
+        p{
+          font-size: 1.1em;
+          line-height: 1.6em;
+          margin-bottom: 28px;
+        }
+
+        h4{
+          font-size: 1.65em;
+          margin: 0 0 8px;
+        }
+      }
+
+      .close-rule{
+        right: 35px;
+        top: 25px;
+        width: 25px;
+
+        img{
+          width: 100%;
+        }
+      }
+    }
+
+    @media #{$information-sm-laptop}{
+      padding: 70px 50px;
+      height: 90vh;
+      width: 960px;
+
+      .content-wrapper{
+        padding-right: 15px;
+
+        p{
+          font-size: 1em;
+          line-height: 1.6em;
+          margin-bottom: 28px;
+        }
+
+        h4{
+          font-size: 1.5em;
+          margin: 0 0 8px;
+        }
+      }
+
+      .close-rule{
+        right: 35px;
+        top: 25px;
+        width: 20px;
+      }
+    }
+
+    @media #{$information-tablet}{
+      padding: 80px 50px 60px;
+      height: 80vh;
+      width: 90%;
+
+      .content-wrapper{
+        padding-right: 15px;
+
+        p{
+          font-size: 1.1em;
+          line-height: 1.6em;
+          margin-bottom: 28px;
+        }
+
+        h4{
+          font-size: 1.6em;
+          margin: 0 0 8px;
+        }
+      }
+
+      .close-rule{
+        right: 35px;
+        top: 25px;
+        width: 24px;
+      }
+    }
+
+    @media #{$information-phone}{
+      padding: 70px 30px 40px;
+      height: 90vh;
+      width: 95%;
+      background-color: rgba(33,23,64,1);
+
+      .content-wrapper{
+        padding-right: 12px;
+
+        p{
+          font-size: 0.95em;
+          line-height: 1.5em;
+          margin-bottom: 25px;
+        }
+
+        h4{
+          font-size: 1.35em;
+          margin: 0 0 5px;
+        }
+      }
+
+      .close-rule{
+        right: 30px;
+        top: 24px;
+        width: 21px;
+      }
+    }
+  }
+
+  &.show-modal{
+    .modal__context{
+      opacity: 1;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      transition: all 300ms 150ms ease-out;
+    }
+  }
+}
+
+// Game 2 Rule Modal Specific styling
+#modal_how-to-play-game-2{
+  .modal__context{
+    .content-wrapper{
+      padding: 0 10%;
+
+      .close-rule-game-2{
+        cursor:pointer;
+        display: inline-block;
+        width: 6%;
+        cursor: pointer;
+
+        img{
+          width: 100%;
+        }
+      }
+
+      @media #{$information-phone}{
+        padding: 0;
+
+        .close-rule-game-2 {
+          width: 15%;
+        }
+      }
+    }
+  }
+}
+
+body{
+  &.show-modal{
+    overflow: hidden;
+  }
+}

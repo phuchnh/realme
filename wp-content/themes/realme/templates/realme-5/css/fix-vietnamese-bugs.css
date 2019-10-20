@@ -1,0 +1,9 @@
+.sec-color6 .sec-title{
+    white-space: nowrap;
+}
+
+.sec-color6 .sec-wrapper .sec-content{
+    width: 1100px;
+    margin: auto;
+    padding: 0;
+}

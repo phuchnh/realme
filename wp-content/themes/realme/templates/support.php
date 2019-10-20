@@ -25,34 +25,34 @@ get_header(); ?>
 
             <!-- Layout Wrapper -->
             <!-- TODO: Add All Link & Make the pages -->
-            <div class="clearfix">
+            <div class="clearfix" style="justify-content: center">
 
                 <!-- QA Page -->
-                <a href="#">
+                <a href="<?php echo the_page_exists_by_slug( 'cau-hoi-thuong-gap' ) ? site_url( 'ho-tro/cau-hoi-thuong-gap' ) : 'https://www.realme.com/vn/support/faq'; ?>">
                     <img src="<?php echo THEME_URI; ?>/assets/img/icon-support-question.png" alt="realme"/>
                     Câu hỏi thường gặp
                 </a>
 
                 <!-- Problem Page -->
-                <a href="#">
+                <a href="<?php echo the_page_exists_by_slug( 'su-co' ) ? site_url( '/ho-tro/su-co' ) : 'https://www.realme.com/vn/support/troubleshooting'; ?>">
                     <img src="<?php echo THEME_URI; ?>/assets/img/icon-support-trouble.png" alt="realme"/>
                     Sự cố
                 </a>
 
                 <!-- Search For Service Center Page -->
-                <a href="#">
+                <a href="https://www.realme.com/vn/support/services">
                     <img src="<?php echo THEME_URI; ?>/assets/img/icon-support-center.png" alt="realme"/>
-                    Trung tâm dịch vụ<br/>khách hàng
+                    Trung tâm dịch vụ<br/>khách hàng
                 </a>
 
                 <!-- Update Software Page -->
-                <a href="#">
+                <a href="https://www.realme.com/vn/support/software-update">
                     <img src="<?php echo THEME_URI; ?>/assets/img/icon-support-update.png" alt="realme"/>
                     Cập nhật phần mềm
                 </a>
 
                 <!-- Check For IMEI Page -->
-                <a href="<?php echo the_page_exists_by_slug( 'check-imei' ) ? site_url( '/check-imei' ) : '#'; ?>">
+                <a href="<?php echo the_page_exists_by_slug( 'kiemtra-imei' ) ? site_url( '/ho-tro/kiemtra-imei/' ) : 'https://www.realme.com/vn/support/services'; ?>">
                     <img src="<?php echo THEME_URI; ?>/assets/img/icon-support-imei.png" alt="realme"/>
                     Kiểm tra IMEI
                 </a>

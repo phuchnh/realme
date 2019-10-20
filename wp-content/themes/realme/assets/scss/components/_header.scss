@@ -163,7 +163,7 @@ body.stop-scroll {
 
     input[type="text"] {
       background: transparent url('../img/icon-search.png') left 10px center no-repeat;
-      padding-left: 35px;
+      padding-left: 40px;
       border: 1px solid #fff;
       height: 30px;
       //width: 320px;
@@ -501,9 +501,10 @@ body.stop-scroll {
 
 /* === SEARCH FORM === */
 #search-product-form{
-  input{
-    outline: none;
-  }
+    input[type="text"]{
+      outline: none;
+      color: $white;
+    }
 }
 
 .search-result{
@@ -537,6 +538,7 @@ body.stop-scroll {
         flex-basis: 23%;
         text-align: center;
         padding: 10px;
+        margin-bottom: 12px;
 
         .link-wrapper{
           cursor:pointer;
@@ -547,23 +549,31 @@ body.stop-scroll {
         }
 
         .phone-img{
-          height: 160px;
+          height: 140px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 5px;
 
           img{
-            height: 160px;
+            height: 140px;
           }
         }
 
         .phone-name{
           margin-top: 5px;
           margin-bottom: 0;
+          font-weight: 600;
+          color: #666;
         }
       }
     }
 
     .no-result{
       display: none;
-      font-size: 22px;
+      font-size: 20px;
+      color: #333;
+      font-weight: 600;
     }
 
     .searching-icon{
@@ -580,6 +590,11 @@ body.stop-scroll {
       height: 100%;
       z-index: 3;
       background-color: $white;
+
+      .fa{
+        font-size: 35px;
+      }
+
     }
 
     &.is-searching{
@@ -591,6 +606,223 @@ body.stop-scroll {
 
         .fa{
           color: #AAA;
+          font-size: 35px;
+        }
+      }
+    }
+  }
+
+  @media #{$information-laptop}{
+    padding: 15px 0;
+
+    .place-holder{
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .search-result-list{
+      min-height: 190px;
+
+      .search-result-holder{
+        .result-item{
+          padding: 10px;
+
+          .phone-img{
+            height: 130px;
+
+            img{
+              height: 130px;
+            }
+          }
+
+          .phone-name{
+            margin-top: 5px;
+          }
+        }
+      }
+
+      .no-result{
+        font-size: 18px;
+      }
+
+      .searching-icon{
+        .fa{
+          font-size: 32px;
+        }
+      }
+
+      &.is-searching{
+        .searching-icon{
+          .fa{
+            font-size: 32px;
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-sm-laptop}{
+    padding: 13px 0;
+
+    .place-holder{
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .search-result-list{
+      min-height: 170px;
+
+      .search-result-holder{
+        .result-item{
+          padding: 9px;
+
+          .phone-img{
+            height: 111px;
+
+            img{
+              height: 115px;
+            }
+          }
+
+          .phone-name{
+            margin-top: 4px;
+            font-size: 15px;
+          }
+        }
+      }
+
+      .no-result{
+        font-size: 16px;
+      }
+
+      .searching-icon{
+        .fa{
+          font-size: 28px;
+        }
+      }
+
+      &.is-searching{
+        .searching-icon{
+          .fa{
+            font-size: 28px;
+          }
+        }
+      }
+    }
+  }
+
+  /* RESPONSIVE */
+  @media #{$information-tablet}{}
+
+  @media #{$information-phone}{
+    padding: 15px;
+
+    .place-holder{
+      font-size: 20px;
+    }
+
+    .search-result-list{
+      min-height: 160px;
+      max-height: calc(100vh - 160px);
+      overflow-y: auto;
+
+      .search-result-holder{
+        padding: 0 15px;
+
+        .result-item{
+          width: 49%;
+          flex-basis: 49%;
+          padding: 10px;
+          margin-bottom: 9px;
+
+          .phone-img{
+            height: 110px;
+            margin-bottom: 3px;
+
+            img{
+              height: 110px;
+              width: auto;
+            }
+          }
+
+          .phone-name{
+            margin-top: 3px;
+          }
+        }
+      }
+
+      .no-result{
+        font-size: 16px;
+      }
+
+      .searching-icon{
+        .fa{
+          font-size: 28px;
+        }
+      }
+
+      &.is-searching{
+        .searching-icon{
+          .fa{
+            font-size: 28px;
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-sm-phone}{
+    padding: 13px;
+
+    .place-holder{
+      font-size: 18px;
+    }
+
+    .search-result-list{
+      min-height: 150px;
+      max-height: calc(100vh - 150px);
+      overflow-y: auto;
+
+      .search-result-holder{
+        padding: 0 13px;
+
+        .result-item{
+          width: 49%;
+          flex-basis: 49%;
+          padding: 8px;
+          margin-bottom: 5px;
+
+          .phone-img{
+            height: 95px;
+            margin-bottom: 3px;
+
+            img{
+              height: 95px;
+            }
+          }
+
+          .phone-name{
+            margin-top: 3px;
+            font-size: 13px;
+          }
+        }
+      }
+
+      .no-result{
+        font-size: 15px;
+      }
+
+      .searching-icon{
+        .fa{
+          font-size: 26px;
+        }
+      }
+
+      &.is-searching{
+        .searching-icon{
+          .fa{
+            font-size: 26px;
+          }
         }
       }
     }

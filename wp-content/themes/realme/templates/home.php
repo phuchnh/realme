@@ -2,7 +2,7 @@
 /**
  * Template Name: Home Page
  */
-get_header('search'); ?>
+get_header(); ?>
 <div class="page-wrapper" id="realme-home-page">
 
     <!-- Section top slider 01 -->

@@ -6,15 +6,25 @@ $product->setSlug( 'products' );
 $product->setRest( 'products' );
 $product->setArgument( 'supports', array( 'title' ) );
 
+// Rest API
+$product->setArgument( 'show_in_rest', true );
+
 // Add selecton tag
 $product->setArgument( 'taxonomies', array( 'post_tag' ) );
 add_action( 'init', function () {
 	register_taxonomy_for_object_type( 'post_tag', 'product' );
 } );
 
-$product->setEditorForm(function () {
-
-});
+// Add custom fields
+$product->addMetaBox(
+	tr_meta_box( 'product_setting' )->setLabel( 'Cài đặt sản phẩm' )->setCallback( function () {
+		$form = tr_form();
+		$link = $form->search( 'product_landingpage' )->setLabel( 'Đường dẫn Landing Page' )->setPostType( 'page' );
+		$priority = new \App\Fields\Number('product_priority', $form);
+		$priority->setLabel('Thứ tự ưu tiên sản phẩm');
+		echo $link, $priority;
+	} )
+);
 
 // Add custom fields
 $product->addMetaBox(
@@ -25,9 +35,10 @@ $product->addMetaBox(
 		$promotion_price = $form->text( 'product_promotion_price' )->setLabel( 'Giá khuyến mãi' );
 		$shop_logo       = $form->image( 'shop_logo' )->setLabel( 'Logo' );
 		$shop_url        = $form->text( 'shop_url' )->setLabel( 'Liên kết' );
+		$shop_name       = $form->text( 'shop_name' )->setLabel( 'Tên nhà bán lẻ (TGDD, Viettel, FPTShop ...)' );
 		$shops           = $form->repeater( 'product_shops' )->setLabel( 'Cửa hàng kinh doanh' )
-		                        ->setFields( array( $shop_logo, $shop_url ) )
-		                        ->setLimit( 4 );
+		                        ->setFields( array( $shop_logo, $shop_url, $shop_name ) )
+		                        ->setLimit( 6 );
 		echo $image, $price, $promotion_price, $shops;
 	} )
 );

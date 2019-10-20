@@ -1,24 +1,48 @@
+<!-- Container -->
 <div class="container">
+
+  <!-- Footer Body -->
   <div class="clearfix">
+
+    <!-- Footer Menu Recommended Column -->
+    <?php if(has_nav_menu('footer-menu-column-1')): ?>
+      <?php 
+        // Get Menu Title
+        $footer1Title = get_term(get_nav_menu_locations()['footer-menu-column-1'], 'nav_menu')->name; 
+      ?>
+      <div class="footer__col">
+        <h3><?php echo $footer1Title; ?></h3>
+        <?php wp_nav_menu( array( 'theme_location' => 'footer-menu-column-1' ) ); ?>
+      </div>
+    <?php endif; ?>
+
+    <!-- Footer Menu Supports Column -->
+    <?php if(has_nav_menu('footer-menu-column-2')): ?>
+      <?php 
+        // Get Menu Title
+        $footer2Title = get_term(get_nav_menu_locations()['footer-menu-column-2'], 'nav_menu')->name; 
+      ?>
+      <div class="footer__col">
+        <h3><?php echo $footer2Title; ?></h3>
+        <?php wp_nav_menu( array( 'theme_location' => 'footer-menu-column-2' ) ); ?>
+      </div>
+    <?php endif; ?>
+
+    <!--Footer Menu About Column -->
+    <?php if(has_nav_menu('footer-menu-column-3')): ?>
+      <?php 
+        // Get Menu Title
+        $footer3Title = get_term(get_nav_menu_locations()['footer-menu-column-3'], 'nav_menu')->name; 
+      ?>
+      <div class="footer__col">
+        <h3><?php echo $footer3Title; ?></h3>
+        <?php wp_nav_menu( array( 'theme_location' => 'footer-menu-column-3' ) ); ?>
+      </div>
+    <?php endif; ?>
+
+    <!-- Footer Email Contacts Column -->
     <div class="footer__col">
-		<?php get_template_part( 'partials/footers/recommend-products' ); ?>
-    </div>
-    <div class="footer__col">
-      <h3>Hỗ trợ</h3>
-      <ul>
-        <li><a href="https://www.realme.com/vn/support/faq">Câu hỏi thường gặp</a></li>
-        <li><a href="https://www.realme.com/vn/support/troubleshooting">Sự cố</a></li>
-        <li><a href="https://www.realme.com/vn/support/services">Trung tâm dịch vụ khách hàng</a></li>
-      </ul>
-    </div>
-    <div class="footer__col">
-      <h3>Về chúng tôi</h3>
-      <ul>
-        <li><a href="https://www.realme.com/vn/brand">Nhãn hiệu chúng tôi</a></li>
-        <li><a href="https://www.realme.com/vn/brand#newsroom">Dành cho Báo chí</a></li>
-      </ul>
-    </div>
-    <div class="footer__col">
+      <!-- TODO: Make this editable using customizer -->
       <h3>Liên hệ</h3>
       <ul>
         <li><a href="mailto:service.vn@realme.com">service.vn@realme.com</a></li>
@@ -26,17 +50,27 @@
         <li><a href="mailto:pr.vn@realme.com">pr.vn@realme.com</a></li>
       </ul>
     </div>
+
+    <!-- Footer Social Contact Column -->
     <div class="footer__col footer__col--last">
+
+      <!-- Location -->
       <div class="footer__popup hidden-pc">
         Vietnam / Việt Nam >
       </div>
+
+      <!-- Phone Number -->
       <a href="#">
         <i class="fa fa-phone" aria-hidden="true"></i>1800 6067
       </a>
+
+      <!-- Working Hour -->
       <p>
         08:00-17:30 MON - SAT<br/>
         Trừ các ngày lễ
       </p>
+
+      <!-- Social Contact -->
       <div class="footer__social">
         <a href="https://www.facebook.com/realmeVietnam/">
           <img src="<?php echo THEME_URI; ?>/assets/img/icon-fb.png" alt=""/>
@@ -44,11 +78,18 @@
         <a href="https://www.youtube.com/RealmeVietnam">
           <img src="<?php echo THEME_URI; ?>/assets/img/icon-youtube.png" alt=""/> </a>
       </div>
+
+      <!-- Location On Desktop -->
       <div class="footer__popup hidden-sp">
         Vietnam / Việt Nam >
       </div>
+
     </div>
+
   </div>
+  <!-- Footer Body - END -->
+
+  <!-- Footer Bottom -->
   <div class="copyright">
     <div class="copyright-left">©&nbsp;Bản quyền thuộc về realme Việt Nam, 2019.</div>
     <div class="copyright-right">
@@ -62,4 +103,7 @@
       </ul>
     </div>
   </div>
+  <!-- Footer Bottom - END -->
+
 </div>
+<!-- Container - END -->

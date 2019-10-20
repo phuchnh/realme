@@ -1,0 +1,52 @@
+body{
+  overflow-x: hidden;
+}
+
+#realme-5-hot-sale-page{
+  overflow: hidden;
+  position: relative;
+  padding-top: 160px;
+
+  &.streaming-page{
+    padding-top: 80px;
+
+    @media #{$information-tablet} {
+      padding-top: 60px;
+    }
+  }
+
+  /* === RESPONSIVE === */
+  @media #{$information-tablet}{
+    padding-top: 0;
+  }
+
+  *{
+    //font-family: 'Montserrat', sans-serif;
+    //font-size: 80%;
+  }
+}
+
+@keyframes arrowMoving{
+  0%{
+    -webkit-transform: translate(0, 0) rotate(45deg);
+    transform: translate(0, 0) rotate(45deg);
+  }
+
+  50%{
+    -webkit-transform: translate(2px, 0) rotate(45deg);
+    transform: translate(2px, 0) rotate(45deg);
+  }
+
+  100%{
+    -webkit-transform: translate(0, 0) rotate(45deg);
+    transform: translate(0, 0) rotate(45deg);
+  }
+}
+
+@import "sections/banner";
+@import "sections/profit-top";
+@import "sections/profit-bottom";
+@import "sections/spec";
+@import "sections/news";
+@import "sections/header";
+@import "sections/streaming";

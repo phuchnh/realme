@@ -1,0 +1,14 @@
+.live-stream-yt{
+  width: 100%;
+  height: 50vw;
+
+  .live-stream-holder{
+    background-color: $black;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media #{$information-tablet} {
+    height: 100vw;
+  }
+}

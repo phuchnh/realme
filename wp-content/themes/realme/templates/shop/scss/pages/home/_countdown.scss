@@ -1,0 +1,167 @@
+.section-countdown{
+  color: $yellow;
+  background-image: linear-gradient(to right, #212357, #282c6d);
+  text-align: center;
+  padding-top: 60px;
+
+  &.style-2{
+    background-image: none;
+    background-color: #180d38;
+  }
+
+  .countdown-wrapper{
+    display: inline-flex;
+    list-style: none;
+    border: 1px solid $yellow;
+    padding: 20px 35px;
+    align-items: flex-end;
+    margin: 5px 0;
+    border-radius: 3px;
+
+    .number-item{
+      font-size: 3em;
+      line-height: 1em;
+      margin-right: 8px;
+      font-weight: 300;
+    }
+
+    .number-divider{
+      margin-right: 15px;
+      font-size: 1.25em;
+      font-weight: 300;
+
+      &:after{
+        content: ':';
+        font-size: 2.25em;
+        line-height: 0;
+        display: inline-block;
+        margin-left: 5px;
+      }
+
+      &:last-child{
+        &:after{display: none;}
+      }
+    }
+  }
+
+  .top-txt, .bottom-txt{
+    font-weight: 300;
+  }
+
+  .top-txt{
+    margin: 0;
+    font-size: 1.25em;
+  }
+
+  .bottom-txt{
+    font-size: 1.75em;
+    margin-top: 20px;
+  }
+
+  /* Responsive */
+  @media #{$information-tablet}{
+    padding-top: 50px;
+
+    .countdown-wrapper{
+      padding: 15px 30px;
+      margin: 5px 0;
+
+      .number-item{
+        font-size: 2.6em;
+        line-height: 1em;
+      }
+
+      .number-divider{
+        margin-right: 12px;
+        font-size: 1.1em;
+
+        &:after{
+          content: ':';
+          font-size: 2em;
+          margin-left: 5px;
+        }
+      }
+    }
+
+    .top-txt{
+      margin: 0;
+      font-size: 1.15em;
+    }
+
+    .bottom-txt{
+      font-size: 1.5em;
+      margin-top: 15px;
+    }
+  }
+
+  @media #{$information-phone}{
+    padding-top: 40px;
+
+    .countdown-wrapper{
+      padding: 12px 20px;
+      margin: 5px 0;
+
+      .number-item{
+        font-size: 2.25em;
+      }
+
+      .number-divider{
+        margin-right: 10px;
+        font-size: 0.9em;
+
+        &:after{
+          content: ':';
+          font-size: 1.8em;
+          margin-left: 5px;
+          top: -2px;
+          position: relative;
+        }
+      }
+    }
+
+    .top-txt{
+      margin: 0;
+      font-size: 1em;
+    }
+
+    .bottom-txt{
+      font-size: 1.4em;
+      margin-top: 10px;
+    }
+  }
+
+  @media #{$information-sm-phone}{
+    padding-top: 30px;
+
+    .countdown-wrapper{
+      padding: 10px 14px;
+      margin: 5px 0;
+
+      .number-item{
+        font-size: 1.75em;
+      }
+
+      .number-divider{
+        margin-right: 8px;
+        font-size: 0.75em;
+
+        &:after{
+          content: ':';
+          font-size: 1.7em;
+          margin-left: 5px;
+          top: -1px;
+        }
+      }
+    }
+
+    .top-txt{
+      margin: 0;
+      font-size: 0.9em;
+    }
+
+    .bottom-txt{
+      font-size: 1.3em;
+      margin-top: 8px;
+    }
+  }
+}

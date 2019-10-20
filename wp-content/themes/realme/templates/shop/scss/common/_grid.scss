@@ -1,0 +1,20 @@
+.row{
+  display: flex;
+  width: 100%;
+
+  &.row-centered{
+    justify-content: center;
+  }
+
+  &.space-between{
+    justify-content: space-between;
+  }
+
+  &.wrapped{
+    flex-wrap: wrap;
+  }
+
+  &.bottom{
+    align-items: flex-end;
+  }
+}

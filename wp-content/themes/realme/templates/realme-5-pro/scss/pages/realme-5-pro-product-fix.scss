@@ -1,0 +1,157 @@
+.container{
+  margin: auto;
+}
+
+#page-header{
+  background-color: #AAA;
+}
+
+.realme-5-header{
+  z-index: 10;
+}
+
+.buynow-modal{
+  z-index: 11;
+}
+
+.clearfix{
+  &:after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+.buynow-modal{
+  .modal-content{
+    .buynow-modal-content{
+      .phone-selection{
+        .phone-select-item{
+          display: flex;
+          align-items: center;
+
+          img{
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-laptop}{
+    .modal-content{
+      .buynow-modal-content{
+        .phone-selection{
+          .phone-select-item{
+            img{
+              height: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-sm-laptop}{
+    .modal-content{
+      .buynow-modal-content{
+
+        &>.title{
+          margin-bottom: 10px;
+        }
+
+        .phone-selection{
+          .phone-select-item{
+            img{
+              height: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* === RESPONSIVE === */
+
+  // Special Milestones
+  @media (max-width: 660px){
+    .modal-content{
+      .buynow-modal-content{
+        .phone-selection{
+          .phone-select-item{
+            padding: 5px 20px;
+            img{
+              height: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 540px){
+    .modal-content{
+      .buynow-modal-content{
+        .phone-selection{
+          .phone-select-item{
+            padding: 3px 15px;
+            img{
+              height: 23px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-phone}{
+    .modal-content{
+      .buynow-modal-content{
+        .phone-selection{
+          margin-bottom: 18px;
+
+          .phone-select-item{
+            padding: 2px 10px;
+            img{
+              height: 22px;
+            }
+          }
+        }
+
+        .partner-group{
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+
+  @media #{$information-sm-phone}{
+    .modal-content{
+      .buynow-modal-content{
+        .phone-selection{
+          margin-bottom: 8px;
+
+          .phone-select-item{
+            padding: 2px 6px;
+            img{
+              height: 15px;
+            }
+          }
+        }
+
+        .partner-group{
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+}
+
+body {
+  font-size: 14px;
+  padding-top: 140px;
+
+  @media screen and (max-width: 769px){
+    padding-top: 20px;
+  }
+}

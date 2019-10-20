@@ -1,0 +1,94 @@
+#realme-5-hot-sale-page {
+  .banner-section {
+    position: relative;
+    overflow: hidden;
+    height: 45.55vw;
+
+    .banner-content {
+      position: absolute;
+      width: 84.5%;
+      right: 4%;
+      bottom: 0;
+    }
+
+    .awareness {
+      position: absolute;
+      left: 1.6%;
+      bottom: 3%;
+      font-weight: 700;
+      font-size: 20px;
+    }
+  }
+
+  @media #{$information-laptop}{
+    .banner-section {
+      .awareness {
+        font-size: 18px;
+      }
+    }
+  }
+
+  @media #{$information-sm-laptop}{
+    .banner-section {
+      .awareness {
+        font-size: 16px;
+      }
+    }
+  }
+
+  /* === RESPONSIVE === */
+  @media #{$information-tablet}{
+    .banner-section {
+      height: 150vw;
+      margin-top: 60px;
+
+      .banner-content{
+        width: 100%;
+        right: 0;
+      }
+
+      .awareness{
+        color: #939598;
+        font-size: 16px;
+        bottom: 1%;
+      }
+    }
+  }
+
+  // Special Milestones
+  @media (max-width: 660px){
+    .banner-section {
+      .awareness{
+        font-size: 15px;
+        bottom: 1%;
+      }
+    }
+  }
+
+  @media (max-width: 540px){
+    .banner-section {
+      .awareness{
+        font-size: 14px;
+        bottom: 1%;
+      }
+    }
+  }
+
+  @media #{$information-phone}{
+    .banner-section {
+      .awareness{
+        font-size: 13px;
+        bottom: 1%;
+      }
+    }
+  }
+
+  @media #{$information-sm-phone}{
+    .banner-section {
+      .awareness{
+        font-size: 12px;
+        bottom: 1%;
+      }
+    }
+  }
+}

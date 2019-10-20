@@ -1,0 +1,909 @@
+.section-ka-list{
+  .ka-list-header{
+    .left-content{
+      width: 52%;
+      flex-basis: 52%;
+      //text-align: center;
+    }
+
+    .title{
+      display: none;
+    }
+
+    .right-content{
+      width: 45%;
+      flex-basis: 45%;
+
+      .list-ka{
+        display: flex;
+        align-items: center;
+        padding: 0;
+        list-style: none;
+
+        .ka-logo{
+          flex-basis: 25%;
+          text-align: center;
+
+          img{
+            max-width: 85%;
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-tablet}{
+    .container{
+      padding: 0;
+    }
+
+    .ka-list-header{
+      background-image: url('../../../img/store/mbbg.png');
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+
+      .row{
+        flex-wrap: wrap;
+      }
+
+      .left-content{
+        width: 100%;
+        flex-basis: 100%;
+        text-align: center;
+        position: relative;
+
+        img{
+          position: relative;
+          z-index: 2;
+        }
+
+        &:after{
+          content: '';
+          height: 33%;
+          width: 100%;
+          background-color: $white;
+          position: absolute;
+          bottom: -3px;
+          left: 0;
+        }
+      }
+
+      .title{
+        display: block;
+        color: $text-color2;
+        padding: 15px 15px 0;
+        font-size: 2.5em;
+        line-height: 1.25em;
+        margin: 0;
+        margin-top: -10px;
+        text-align: center;
+        font-weight: 400;
+        width: 100%;
+        padding-bottom: 10px;
+        background-color: $white;
+        margin-bottom: -2px;
+      }
+
+      .right-content{
+        width: 100%;
+        flex-basis: 100%;
+        background-color: $white;
+
+        .list-ka{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          list-style: none;
+
+          .ka-logo{
+            margin-right: 35px;
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-phone}{
+    .ka-list-header{
+
+      .left-content{
+        padding: 0 38px;
+        img{
+          width: 100%;
+        }
+        &:after{
+          content: '';
+          height: 60%;
+          width: 100%;
+        }
+      }
+
+      .title{
+        font-size: 1.8em;
+        line-height: 1.5em;
+        margin: 0;
+        margin-top: -10px;
+        padding-bottom: 10px;
+        margin-bottom: -2px;
+      }
+
+      .right-content{
+        .list-ka{
+          display: flex;
+          align-items: center;
+          padding: 0 20px;
+          list-style: none;
+          justify-content: space-around;
+
+          .ka-logo{
+            margin-right: 0;
+            flex-basis: 22%;
+            text-align: center;
+            img{
+              max-width: 100%;
+              max-height: 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-sm-phone}{
+    .ka-list-header{
+      .title{
+        font-size: 1.5em;
+        line-height: 1.5em;
+        margin: 0;
+        margin-top: -10px;
+        padding-bottom: 10px;
+        margin-bottom: -2px;
+      }
+    }
+  }
+
+
+  /* Shop mapper customize */
+  .store-wrapper{
+    #storemapper{
+      #storemapper-left, #storemapper-right{
+        height: 400px;
+      }
+
+      #storemapper-left{
+        width: 52%;
+        height: 600px;
+        padding-right: 40px;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        &:before{
+          content: 'Mua tại cửa hàng';
+          display: block;
+          color: $text-color2;
+          padding: 15px 15px 0;
+          font-size: 2.5em;
+          line-height: 1.25em;
+          margin: 0;
+          margin-top: -10px;
+        }
+
+        #storemapper-list{
+          background-color: transparent;
+        }
+
+        #storemapper-form{
+          box-shadow: none;
+          padding: 15px 15px 0;
+
+          .storemapper-dropdown-menu{
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translate(-50%);
+          }
+        }
+
+        .storemapper-form-inner{
+          display: flex;
+          align-items: center;
+
+          #storemapper-go{
+            margin-top: 0;
+            position: relative;
+            font-size: 16px;
+            background-color: $yellow;
+            color: $text-color2;
+            font-weight: 400;
+            width: 140px;
+            height: 40px;
+            top: -2px;
+            margin-left: 10px;
+            text-transform: initial;
+            border-radius: 5px;
+          }
+
+          .storemapper-categories{
+            width: 140px;
+            margin-left: 10px;
+            margin-right: 0;
+            top: -2px;
+            position: relative;
+            order: 2;
+
+            #storemapper-filter{
+              width: 100%;
+              font-weight: 400;
+              font-size: 16px;
+              background-color: $yellow;
+              color: $text-color2;
+              padding: 0 20px;
+              display: inline-block;
+              height: 40px;
+              border-radius: 5px;
+
+              &:before{
+                content: '';
+                display: inline-block;
+                width: 18px;
+                height: 16px;
+                background-image: url('../../../img/store/filter-icon.png');
+                background-size: 18px 16px;
+                position: relative;
+                top: 2px;
+                margin-right: 4px;
+              }
+
+              .caret{
+                display: none;
+              }
+            }
+          }
+
+          #storemapper-zip{
+            background-color: #EEECED;
+            height: 40px;
+            border-radius: 5px;
+            color: darken(#A0A0A0, 15%);
+            border: 1px solid lighten(#B0AEAF, 15%);
+            border-top: none;
+            box-shadow: none;
+          }
+        }
+
+        #storemapper-list{
+          li{
+            box-shadow: none;
+            margin-bottom: 0;
+
+            *{
+              color: $text-color2;
+              fill: $text-color2;
+            }
+
+            a{
+              color: $text-color2;
+              border-color: $text-color2;
+            }
+
+            &.storemapper-selected{
+              background-color: $yellow;
+
+              p{
+                color: $text-color2;
+
+                a{
+                  border-color: $text-color2;
+                }
+
+                &.storemapper_view a{
+                  background-color: $text-color2;
+                  color: $white;
+                  border-color: $text-color2;
+                }
+              }
+
+              svg{
+                fill: $text-color2;
+              }
+
+              .storemapper-title{
+                color: $text-color2
+              }
+            }
+          }
+        }
+
+        /* Scrollbar Styling */
+        /* width */
+        &::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+          background: #f1f1f1;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+          background: #888;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+      }
+
+      #storemapper-right{
+        width: 48%;
+        margin-right: auto;
+        float: left;
+      }
+
+      .storemapper-powered-by,
+      .storemapper-powered-by[style]{
+        display: none !important;
+      }
+
+      #storemapper-list li.storemapper-selected p.storemapper_view a,
+      #storemapper-list li.storemapper-selected p.storemapper_directions a{
+        background-color: $text-color2;
+        color: $white !important;
+      }
+    }
+
+    @media #{$information-tablet}{
+      background-color: $white;
+      padding: 40px 15px;
+      position: relative;
+
+      #storemapper{
+        #storemapper-left, #storemapper-right{
+          height: 400px;
+        }
+
+        #storemapper-left{
+          width: 100%;
+          height: 600px;
+          padding-right: 20px;
+
+          &:before{
+            display: none;
+          }
+
+          #storemapper-list{
+            background-color: transparent;
+          }
+
+          #storemapper-form{
+            box-shadow: none;
+            padding: 15px 15px 0;
+
+            .storemapper-dropdown-menu{
+              left: 50%;
+              -webkit-transform: translateX(-50%);
+              transform: translate(-50%);
+            }
+          }
+
+          .storemapper-form-inner{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            #storemapper-go{
+              position: relative;
+              font-size: 16px;
+              background-color: $yellow;
+              color: $text-color2;
+              font-weight: 400;
+              width: 48%;
+              height: 40px;
+              top: -2px;
+              margin: 10px 0 0;
+            }
+
+            .storemapper-categories{
+              width: 48%;
+              margin: 10px 0 0;
+              top: -2px;
+              position: relative;
+              order: 2;
+
+              #storemapper-filter{
+                width: 100%;
+                font-weight: 400;
+                font-size: 16px;
+                background-color: $yellow;
+                color: $text-color2;
+                padding: 0 20px;
+                display: inline-block;
+                height: 40px;
+                border-radius: 5px;
+
+                &:before{
+                  content: '';
+                  display: inline-block;
+                  width: 18px;
+                  height: 16px;
+                  background-image: url('../../../img/store/filter-icon.png');
+                  background-size: 18px 16px;
+                  position: relative;
+                  top: 2px;
+                  margin-right: 4px;
+                }
+
+                .caret{
+                  display: none;
+                }
+              }
+            }
+
+            #storemapper-zip{
+              background-color: #EEECED;
+              height: 40px;
+              border-radius: 5px;
+              color: darken(#A0A0A0, 15%);
+              border: 1px solid lighten(#B0AEAF, 15%);
+              border-top: none;
+              box-shadow: none;
+            }
+          }
+
+          #storemapper-list{
+            li{
+              box-shadow: none;
+              margin-bottom: 0;
+
+              *{
+                color: $text-color2;
+                fill: $text-color2;
+              }
+
+              a{
+                color: $text-color2;
+                border-color: $text-color2;
+              }
+
+              &.storemapper-selected{
+                background-color: $yellow;
+
+                p{
+                  color: $text-color2;
+
+                  a{
+                    border-color: $text-color2;
+                  }
+
+                  &.storemapper_view a{
+                    background-color: $text-color2;
+                    color: $white;
+                    border-color: $text-color2;
+                  }
+                }
+
+                svg{
+                  fill: $text-color2;
+                }
+
+                .storemapper-title{
+                  color: $text-color2
+                }
+              }
+            }
+          }
+
+          /* Scrollbar Styling */
+          /* width */
+          &::-webkit-scrollbar {
+            width: 10px;
+          }
+
+          /* Track */
+          &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+          }
+
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: #888;
+          }
+
+          /* Handle on hover */
+          &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+          }
+        }
+
+        #storemapper-right{
+          width: 43%;
+          margin-right: auto;
+          float: left;
+        }
+
+        .storemapper-powered-by,
+        .storemapper-powered-by[style]{
+          display: none !important;
+        }
+      }
+    }
+
+    @media #{$information-phone}{
+      padding: 0;
+      #storemapper{
+        #storemapper-right{
+          height: 300px;
+        }
+
+        #storemapper-right{
+          position: absolute;
+          top: 70px;
+        }
+
+        #storemapper-left{
+          height: auto;
+          padding-right: 0;
+
+          &:before{
+            display: none;
+          }
+
+          #storemapper-list{
+            background-color: transparent;
+          }
+
+          #storemapper-form{
+            box-shadow: none;
+            padding: 15px 12px 0;
+
+            .storemapper-dropdown-menu{
+              left: 50%;
+              -webkit-transform: translateX(-50%);
+              transform: translate(-50%);
+            }
+          }
+
+          .storemapper-form-inner{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-bottom: 320px;
+
+            #storemapper-go{
+              position: relative;
+              font-size: 14px;
+              background-color: $yellow;
+              color: $text-color2;
+              font-weight: 600;
+              width: 30%;
+              height: 36px;
+              top: -2px;
+              margin: 0;
+              order: 2;
+            }
+
+            .storemapper-categories{
+              width: 100%;
+              margin: 10px 0 0;
+              top: -2px;
+              position: relative;
+              order: 2;
+
+              #storemapper-filter{
+                width: 100%;
+                font-weight: 600;
+                font-size: 14px;
+                background-color: $yellow;
+                color: $text-color2;
+                padding: 0 20px;
+                display: inline-block;
+                height: 36px;
+                border-radius: 5px;
+
+                &:before{
+                  content: '';
+                  display: inline-block;
+                  width: 18px;
+                  height: 16px;
+                  background-image: url('../../../img/store/filter-icon.png');
+                  background-size: 18px 16px;
+                  position: relative;
+                  top: 2px;
+                  margin-right: 4px;
+                }
+
+                .caret{
+                  display: none;
+                }
+              }
+            }
+
+            #storemapper-zip{
+              background-color: #EEECED;
+              height: 36px;
+              font-size: 14px;
+              border-radius: 5px;
+              color: darken(#A0A0A0, 15%);
+              border: 1px solid lighten(#B0AEAF, 15%);
+              width: 68%;
+              border-top: none;
+              box-shadow: none;
+            }
+          }
+
+          #storemapper-list{
+            padding-top: 10px;
+
+            li{
+              box-shadow: none;
+              margin-bottom: 0;
+              padding: 10px 12px 5px;
+
+              p{
+                margin-bottom: 5px;
+                font-size: 0.75em;
+              }
+
+              *{
+                color: $text-color2;
+                fill: $text-color2;
+              }
+
+              a{
+                color: $text-color2;
+                border-color: $text-color2;
+                font-size: 0.75em;
+                line-height: 14px;
+              }
+
+              .storemapper-title{
+                font-size: 0.8em;
+              }
+
+              &.storemapper-selected{
+                background-color: $yellow;
+
+                p{
+                  color: $text-color2;
+                  margin-bottom: 5px;
+
+                  a{
+                    border-color: $text-color2;
+                  }
+
+                  &.storemapper_view a{
+                    background-color: $text-color2;
+                    color: $white;
+                    border-color: $text-color2;
+                  }
+                }
+
+                svg{
+                  fill: $text-color2;
+                }
+
+                .storemapper-title{
+                  color: $text-color2
+                }
+              }
+            }
+          }
+
+          /* Scrollbar Styling */
+          /* width */
+          &::-webkit-scrollbar {
+            width: 10px;
+          }
+
+          /* Track */
+          &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+          }
+
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: #888;
+          }
+
+          /* Handle on hover */
+          &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+          }
+        }
+
+        #storemapper-right{
+          width: 43%;
+          margin-right: auto;
+          float: left;
+        }
+
+        .storemapper-powered-by,
+        .storemapper-powered-by[style]{
+          display: none !important;
+        }
+      }
+    }
+
+    @media #{$information-sm-phone}{
+      padding: 0;
+
+      #storemapper{
+        #storemapper-right{
+          height: 280px;
+        }
+
+        #storemapper-left{
+          padding: 0 12px;
+
+          #storemapper-form{
+            box-shadow: none;
+            padding: 15px 0 0;
+
+            .storemapper-dropdown-menu{
+              left: 50%;
+              -webkit-transform: translateX(-50%);
+              transform: translate(-50%);
+            }
+          }
+
+          .storemapper-form-inner{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-bottom: 300px;
+
+            #storemapper-go{
+              position: relative;
+              font-size: 12px;
+              background-color: $yellow;
+              color: $text-color2;
+              font-weight: 400;
+              width: 30%;
+              height: 36px;
+              top: -2px;
+              margin: 0;
+            }
+
+            .storemapper-categories{
+              width: 48%;
+              margin: 10px 0 0;
+              top: -2px;
+              position: relative;
+              order: 2;
+
+              #storemapper-filter{
+                width: 100%;
+                font-weight: 400;
+                font-size: 16px;
+                padding: 0 20px;
+                height: 40px;
+                border-radius: 5px;
+              }
+            }
+
+            #storemapper-zip{
+              background-color: #EEECED;
+              height: 36px;
+              border-radius: 5px;
+              color: darken(#A0A0A0, 15%);
+              border: 1px solid lighten(#B0AEAF, 15%);
+              border-top: none;
+              box-shadow: none;
+            }
+          }
+
+          #storemapper-list{
+            padding: 15px 0;
+            li{
+              box-shadow: none;
+              margin-bottom: 0;
+
+              *{
+                color: $text-color2;
+                fill: $text-color2;
+              }
+
+              a{
+                color: $text-color2;
+                border-color: $text-color2;
+              }
+
+              &.storemapper-selected{
+                background-color: $yellow;
+
+                p{
+                  color: $text-color2;
+
+                  a{
+                    border-color: $text-color2;
+                  }
+
+                  &.storemapper_view a{
+                    background-color: $text-color2;
+                    color: $white;
+                    border-color: $text-color2;
+                  }
+                }
+
+                svg{
+                  fill: $text-color2;
+                }
+
+                .storemapper-title{
+                  color: $text-color2
+                }
+              }
+            }
+          }
+
+          /* Scrollbar Styling */
+          /* width */
+          &::-webkit-scrollbar {
+            width: 10px;
+          }
+
+          /* Track */
+          &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+          }
+
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: #888;
+          }
+
+          /* Handle on hover */
+          &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+          }
+        }
+
+        #storemapper-right{
+          width: 43%;
+          margin-right: auto;
+          float: left;
+        }
+
+        .storemapper-powered-by,
+        .storemapper-powered-by[style]{
+          display: none !important;
+        }
+      }
+    }
+  }
+}
+
+.section-ka-list .store-wrapper #storemapper #storemapper-left .storemapper-form-inner .storemapper-categories{
+  display: none;
+}
+
+//#storemapper .storemapper-reset{
+//  background-color: darken(#EEECED, 5%);
+//  display: flex !important;
+//  justify-content: center;
+//  align-items: center;
+//  width: 36px !important;
+//
+//  svg{
+//    position: static !important;
+//    display: block;
+//    transform: none !important;
+//  }
+//  .storemapper-reset-gradient{
+//    display: none;
+//  }
+//}
+
+#storemapper-autocomplete{
+  top: 50px;
+
+  @media #{$information-phone}{
+    top: 46px;
+  }
+
+  @media #{$information-sm-phone}{
+    top: 44px;
+  }
+}

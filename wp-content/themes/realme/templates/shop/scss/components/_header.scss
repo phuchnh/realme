@@ -1,0 +1,226 @@
+.header{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 3;
+
+  .container{
+    overflow: visible;
+  }
+
+  &.style-1{
+    color: $text-color2;
+  }
+
+  &.style-2{
+    color: $white;
+  }
+
+  .header-wrapper{
+    display: flex;
+    justify-content: space-between;
+
+    .menu-mb{
+      display: none;
+    }
+
+    .main-menu{
+      list-style: none;
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      padding:0 0 0 60px;
+
+      .menu-item{
+        line-height: 40px;
+        font-size: 0.95em;
+
+        .reduced-size{
+          max-width: 140px;
+          display: inline-block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .link{
+          cursor: pointer;
+        }
+
+        &.active{
+          .link{
+            color: $yellow;
+            cursor: initial;
+          }
+        }
+
+        &.with-submenu{
+          position: relative;
+
+          .sub-menu{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            position: absolute;
+            top: 100%;
+            transform-origin: top left;
+            transform: scaleY(0);
+            transition: all ease-out 150ms 10ms;
+
+            .sub-menu-item{
+              width: 120px;
+              padding: 8px 0;
+              white-space: nowrap;
+            }
+          }
+
+          &:hover{
+            .sub-menu{
+              transform: scaleX(1);
+            }
+          }
+        }
+      }
+    }
+
+    .menu-overlay{
+      display: none;
+    }
+  }
+
+  @media #{$information-tablet}{
+    position: fixed;
+    background-color: $white;
+    padding: 8px 0 10px;
+
+    .header-wrapper{
+      height: 50px;
+
+      .menu-overlay{
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: $primary-color;
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .menu-mb{
+        display: flex;
+        height: 55px;
+        align-items: center;
+
+        .cta-wrapper{
+          margin-right: 14px;
+        }
+
+        .menu-toggle{
+          position: relative;
+
+          img{
+            display: block;
+          }
+
+          .close-menu{
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transform: rotate(-45deg);
+            transition: all 240ms 10ms ease-in;
+          }
+
+          .open-menu{
+            opacity: 1;
+            transform: rotate(0);
+            transition: all 240ms 120ms ease-out;
+          }
+
+          &.open{
+            .close-menu{
+              opacity: 1;
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+
+      .main-menu{
+        flex: 1;
+        flex-direction: column;
+        background-color: $white;
+        padding:15px 20px;
+        position: absolute;
+        color: $text-color2;
+        width: 100%;
+        left: 0;
+        top: 58px;
+        margin: 0;
+        z-index: 3;
+
+        display: none;
+
+        .menu-item{
+          line-height: 40px;
+
+          .link{
+            cursor: pointer;
+          }
+
+          &.active{
+            .link{
+              color: $yellow;
+              cursor: initial;
+            }
+          }
+        }
+      }
+    }
+
+    &.show-menu{
+      .header-wrapper{
+        .menu-mb{
+          .menu-toggle{
+            .close-menu{
+              opacity: 1;
+              transform: rotate(0deg);
+              transition: all 240ms 120ms ease-out;
+            }
+
+            .open-menu{
+              opacity: 0;
+              transform: rotate(45deg);
+              transition: all 240ms 10ms ease-in;
+            }
+          }
+        }
+
+        .menu-overlay{
+          opacity: 0.5;
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
+
+@media #{$information-tablet}{
+  body{
+    padding-top: 68px;
+  }
+}
+
+@media #{$information-phone}{
+  body {
+    padding-top: 0;
+
+    &.with-pd{
+      padding-top: 68px;
+    }
+  }
+}

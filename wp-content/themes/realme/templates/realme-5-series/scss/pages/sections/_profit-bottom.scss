@@ -1,0 +1,209 @@
+#realme-5-hot-sale-page {
+  .profit-section {
+    .profit-bottom {
+      height: 56.55vw;
+      position: relative;
+
+      .section-background {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .title {
+        position: absolute;
+        width: 100%;
+        height: 22%;
+        top: 7%;
+
+        .line-1 {
+          width: 35.3%;
+          margin: auto;
+        }
+
+        .line-2 {
+          color: $text-yellow;
+          text-align: center;
+          font-size: 35.5px;
+          line-height: 48px;
+          font-style: italic;
+          margin: 0;
+        }
+
+        .logo-holder {
+          text-align: center;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+
+          img {
+            width: 17.7%;
+          }
+        }
+      }
+
+      .profit-images {
+        position: absolute;
+        width: 86.1%;
+        left: 5%;
+        bottom: 12%;
+      }
+    }
+  }
+
+  @media #{$information-laptop}{
+    .profit-section {
+      .profit-bottom {
+        .title{
+          .line-2 {
+            font-size: 31px;
+            line-height: 44px;
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-sm-laptop}{
+    .profit-section {
+      .profit-bottom {
+        .title{
+          .line-2 {
+            font-size: 29px;
+            line-height: 42px;
+          }
+        }
+      }
+    }
+  }
+
+  /* === RESPONSIVE === */
+  @media #{$information-tablet}{
+    .profit-section {
+      .profit-bottom {
+        height: 180vw;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+
+        .section-background {
+          display: none;
+        }
+
+        .title {
+          width: 100%;
+          height: 14.25%;
+          top: 0;
+          padding-top: 3vw;
+
+          .line-1 {
+            width: 62.5%;
+            top: 1%;
+          }
+
+          .line-2 {
+            color: $text-yellow;
+            font-size: 27px;
+            line-height: 40px;
+          }
+
+          .logo-holder {
+            width: 100%;
+
+            img {
+              width: 31.75%;
+            }
+          }
+        }
+
+        .profit-images {
+          position: absolute;
+          width: 100%;
+          left: 0;
+          bottom: 0;
+          height: 150vw;
+
+          .phone-img-holder, .plus-img-holder, .gift-img-holder{
+            position: absolute;
+          }
+
+          .phone-img-holder{
+            width: 84.55%;
+            left: 8.4%;
+          }
+
+          .plus-img-holder{
+            width: 8%;
+            left: 46%;
+            top: 62.75%;
+          }
+
+          .gift-img-holder{
+            width: 92%;
+            left: 0;
+            bottom: 5.5%;
+          }
+        }
+      }
+    }
+  }
+
+  // Special Milestones
+  @media (max-width: 660px){
+    .profit-section {
+      .profit-bottom {
+        .title {
+          .line-2 {
+            font-size: 24px;
+            line-height: 35px;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 540px){
+    .profit-section {
+      .profit-bottom {
+        .title {
+          .line-2 {
+            font-size: 20px;
+            line-height: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-phone}{
+    .profit-section {
+      .profit-bottom {
+        .title {
+          .line-2 {
+            font-size: 14px;
+            line-height: 25px;
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$information-sm-phone}{
+    .profit-section {
+      .profit-bottom {
+        .title {
+          .line-2 {
+            font-size: 12px;
+            line-height: 20px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+$primary-color: #180d39;
+$white: #FFF;
+$yellow: #FFC813;
+$gray:#E2E1E7;
+$text-color:#222;
+$text-color2:#292f6d;
+$realme-txt: #676D72;
+$deactive-bg: #c9c8c8;
+
+/* =======================================
+ * RESPONSIVE MARK
+ /* ======================================= */
+$information-laptop: "only screen and (max-width : 1368px)";
+$information-sm-laptop: "only screen and (max-width : 1280px)";
+$information-lg-tablet: "only screen and (max-width : 1024px)";
+$information-tablet: "only screen and (max-width : 768px)";
+$information-phone: "only screen and (max-width : 480px)";
+$information-sm-phone: "only screen and (max-width : 360px)";
+
+/* USAGE */
+@media #{$information-sm-laptop}{}

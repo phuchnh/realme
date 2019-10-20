@@ -1,0 +1,146 @@
+.streaming-page{
+  .realme-5-header{
+    top: 0;
+  }
+}
+
+.realme-5-header{
+  position: fixed;
+  top: 90px;
+  width: 100%;
+  height: 80px;
+  z-index: 5;
+  left: 0;
+  background-color: $white;
+
+  .realme-5-menu{
+    border-bottom: 1px solid #666E70;
+    display: flex;
+    justify-content: space-around;
+
+    .mb-menu{
+      display: none;
+    }
+
+    .menu-item{
+      height: 80px;
+      line-height: 80px;
+
+      a{
+        color: #666E70;
+        cursor: pointer;
+        font-size: 15px;
+        transition: all ease-in 100ms;
+
+        &:hover{
+          color: #FFC813;
+          transition: all ease-out 150ms;
+        }
+
+        &.buynow-btn{
+          border: 2px solid #FFC813;
+          border-radius: 5px;
+          color: #FFC813;
+          padding: 0 30px;
+          line-height: 30px;
+          display: inline-block;
+          font-weight: 600;
+
+          &:hover{
+            background-color: #FFC813;
+            color: #666E70;
+            transition: all ease-out 150ms;
+          }
+        }
+      }
+    }
+  }
+
+  &.menu-scroll{
+    top: 0;
+    height: 50px;
+    background-color: $white;
+    box-shadow: 0 0 5px rgba(0,0,0, 0.4);
+    transition: all ease-out 300ms;
+
+    .realme-5-menu{
+      border-bottom: none;
+
+      .menu-item{
+        height: 50px;
+        line-height: 50px;
+        transition: height ease-out 300ms;
+      }
+    }
+  }
+
+
+  /* === RESPONSIVE === */
+  @media #{$information-tablet}{
+    height: 60px;
+    top: 60px;
+
+    .container{
+      width: 100%;
+    }
+
+    .realme-5-menu{
+      justify-content: flex-end;
+      position: relative;
+      padding: 0 15px;
+
+      .menu-item{
+        display: none;
+        height: 60px;
+        line-height: 60px;
+
+        &.cta-btn{
+          display: inline-block;
+        }
+      }
+
+      .show-sub-menu{
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        display: block;
+        left: calc(50% - 8px);
+        bottom: 10px;
+        border: 2px solid #AAA;
+        transform: rotate(45deg);
+        border-top: none;
+        border-left: none;
+      }
+
+      .mb-menu{
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        left: 0;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+
+        .mb-menu-overlay{
+          width: 100%;
+          height: 100vh;
+          background-color: rgba(0,0,0,0.4);
+          top: 0;
+          left: 0;
+          position: absolute;
+        }
+
+        .main-sub-menu{
+          position: relative;
+          z-index: 2;
+          background-color: $white;
+          padding: 10px 0;
+
+          .sub-menu-item{
+            line-height: 50px;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}

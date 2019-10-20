@@ -1,0 +1,362 @@
+.section-playground-1,
+.section-playground-3{
+  padding: 90px 0 0;
+
+  .title{
+    font-size: 2.5em;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .intro{
+    font-size: 1em;
+    line-height: 1.5em;
+  }
+
+  .main-playground{
+    text-align: center;
+    color: #180d39;
+    padding-bottom: 50px;
+    position: relative;
+
+    .question-list{
+      list-style: none;
+      padding: 0;
+      margin: 50px 0 0;
+
+      .question-item{
+        margin-bottom: 50px;
+
+        .question-detail{
+          font-weight: 800;
+          font-size: 1.5em;
+          margin-bottom: 10px;
+        }
+
+        .question-answers{
+          display: flex;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          justify-content: space-between;
+
+          .answer{
+            width: 33%;
+            flex-basis: 33%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+
+            .target-img{
+              width: 130px;
+              height: 120px;
+              position: relative;
+
+              img{
+                &.main-img, &.gray-img{
+                  position: absolute;
+                  width: 130px;
+                  left: 5px;
+                  top: 0;
+                }
+
+                &.check-img{
+                  position: absolute;
+                  width: 70%;
+                  top: 18%;
+                  left: 15%;
+                }
+
+                &.check-img, &.gray-img{
+                  opacity: 0;
+                  visibility: hidden;
+                }
+              }
+            }
+
+            &.wrong{
+              .target-img{
+                img{
+                  &.gray-img{
+                    opacity: 1;
+                    visibility: visible;
+                  }
+                }
+              }
+            }
+
+            &.correct{
+              .target-img{
+                img {
+                  &.check-img {
+                    opacity: 1;
+                    visibility: visible;
+                  }
+                }
+              }
+            }
+
+            .answer-context{
+              width: 100%;
+              font-size: 1.35em;
+              font-weight: 400;
+              line-height: 1.25em;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .finish-message{
+    position: relative;
+
+    .message-bg{
+      img{
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .main-content{
+      position: absolute;
+      top: 90px;
+      width: 100%;
+      text-align: center;
+
+      .title{
+        margin-bottom: 60px;
+      }
+
+      .context{
+        font-size: 1.5em;
+        line-height: 1.5em;
+
+        .link{
+          color: $yellow;
+
+          &:hover{
+            color: darken($yellow, 10%);
+          }
+        }
+      }
+
+      .cta-wrapper{
+        margin-top: 50px;
+
+        .cta{
+          padding: 3px 70px;
+          font-weight: 600;
+          font-size: 1.05em;
+        }
+      }
+    }
+
+    &.style-2{
+      display: flex;
+      flex-direction: column-reverse;
+
+      .main-content{
+        position: static;
+        padding-top: 120px;
+        margin-bottom: -60px;
+
+        /* Responsive */
+        @media #{$information-phone}{
+          padding-top: 30px;
+          margin-bottom: -30px;
+        }
+      }
+    }
+  }
+
+  .live-record{
+    position: absolute;
+    right: calc((100% - 1200px)/2);
+    top: -15px;
+    font-size: 1.15em;
+    background-color: $yellow;
+    box-shadow: 0 0 2px rgba(0,0,0,0.3);
+    border-radius: 4px;
+    padding: 10px 20px;
+    transition: all ease-out 150ms;
+
+    .live-number{
+      font-weight: 800;
+      margin: 0 5px;
+    }
+
+    &.sticky{
+      position: fixed;
+      top: 15px;
+      z-index: 2;
+    }
+  }
+
+  /* Responsive */
+  @media #{$information-tablet}{
+    .live-record{
+      right: 15px;
+      top: -10px;
+      font-size: 0.9em;
+      border-radius: 4px;
+      padding: 5px 12px;
+      transition: all ease-out 200ms;
+
+      .live-number{
+        margin: 0 4px;
+      }
+
+      &.sticky{
+        top: 75px;
+      }
+    }
+  }
+
+  @media #{$information-phone}{
+    padding: 20px 0 0;
+
+    .title{
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .live-record{
+      right: 10px;
+      top: -30px;
+      font-size: 0.9em;
+      border-radius: 4px;
+      padding: 5px 12px;
+      transition: all ease-out 200ms;
+
+      .live-number{
+        margin: 0 4px;
+      }
+
+      &.sticky{
+        top: 75px;
+      }
+    }
+
+    .intro{
+      font-size: 1em;
+      line-height: 1.5em;
+      br{
+        display: none;
+      }
+    }
+
+    .main-playground{
+      padding-bottom: 20px;
+
+      .question-list{
+        padding: 0;
+        margin: 30px 0 0;
+
+        .question-item{
+          margin-bottom: 50px;
+
+          .question-detail{
+            font-size: 1.15em;
+            margin-bottom: 10px;
+            padding: 0 15px;
+
+            br{
+              display: none;
+            }
+          }
+
+          .question-answers{
+            flex-wrap: wrap;
+
+            .answer{
+              width: 100%;
+              flex-basis: 100%;
+
+              .target-img{
+                width: 110px;
+                height: 100px;
+
+                img{
+                  &.main-img, &.gray-img{
+                    width: 110px;
+                    left: 5px;
+                  }
+                }
+              }
+
+              .answer-context{
+                font-size: 1.1em;
+                line-height: 1.5em;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .finish-message{
+      .message-bg{
+        width: 100%;
+
+        img{
+          display: block;
+          width: 100%;
+        }
+      }
+
+      .main-content{
+        top: 30px;
+
+        .title{
+          margin-bottom: 10px;
+        }
+
+        .context{
+          font-size: 1em;
+          line-height: 1.5em;
+          padding: 0 15px;
+          margin-bottom: 0;
+          font-weight: 400;
+
+          b{
+            display: inline;
+            margin-bottom: 5px;
+          }
+
+          br{
+            display: none;
+          }
+        }
+
+        .cta-wrapper{
+          margin-top: 30px;
+
+          .cta{
+            padding: 0 40px;
+            font-weight: 600;
+            font-size: 1em;
+          }
+        }
+      }
+
+      &.style-2{
+        display: flex;
+        flex-direction: column-reverse;
+
+        .main-content{
+          position: static;
+          padding-top: 120px;
+          margin-bottom: -60px;
+
+          /* Responsive */
+          @media #{$information-phone}{
+            padding-top: 30px;
+            margin-bottom: -30px;
+          }
+        }
+      }
+    }
+  }
+}

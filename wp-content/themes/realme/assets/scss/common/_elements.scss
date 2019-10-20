@@ -13,3 +13,14 @@ ul {
 img {
   max-width: 100%;
 }
+
+.lg-container{
+  width: 1440px;
+  max-width: 100%;
+  padding: 0 15px;
+  margin: auto;
+
+  @media #{$information-laptop}{
+    width: 1200px;
+  }
+}

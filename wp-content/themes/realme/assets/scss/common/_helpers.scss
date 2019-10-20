@@ -121,7 +121,12 @@ $sides: (top, bottom, left, right); // Leave this variable alone
 
 .mb-show{
   display: none !important;
+
   @media #{$information-tablet} {
     display: block !important;
+
+    &.inline-block{
+      display: inline-block !important;
+    }
   }
 }
