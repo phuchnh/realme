@@ -153,7 +153,13 @@
     }
 
     .top-news {
-      padding-bottom: 0;
+      padding-bottom: 20px;
+      margin-bottom: 0;
+      height: auto;
+
+      .top-news__content{
+        height: auto;
+      }
     }
 
     .top-phone {
@@ -194,7 +200,9 @@
     }
 
     .top-news {
-      height: 186.7vw;
+      .top-news__content{
+        height: auto;
+      }
 
       p {
         top: initial;

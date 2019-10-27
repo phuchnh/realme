@@ -60,8 +60,9 @@
       </div>
 
       <!-- Phone Number -->
-      <a href="#">
-        <i class="fa fa-phone" aria-hidden="true"></i>1800 6067
+      <a href="tel:<?php echo tr_options_field('realme_theme_options.company_phone'); ?>">
+        <i class="fa fa-phone" aria-hidden="true"></i>
+          <?php echo tr_options_field('realme_theme_options.company_phone'); ?>
       </a>
 
       <!-- Working Hour -->
@@ -72,10 +73,10 @@
 
       <!-- Social Contact -->
       <div class="footer__social">
-        <a href="https://www.facebook.com/realmeVietnam/">
+        <a href="<?php echo tr_options_field('realme_theme_options.facebook_fanpage'); ?>">
           <img src="<?php echo THEME_URI; ?>/assets/img/icon-fb.png" alt=""/>
         </a>
-        <a href="https://www.youtube.com/RealmeVietnam">
+        <a href="<?php echo tr_options_field('realme_theme_options.youtube_channel'); ?>">
           <img src="<?php echo THEME_URI; ?>/assets/img/icon-youtube.png" alt=""/> </a>
       </div>
 

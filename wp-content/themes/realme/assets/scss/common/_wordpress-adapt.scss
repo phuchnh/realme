@@ -14,3 +14,39 @@
     }
   }
 }
+
+.other-phone-layout{
+  display: flex;
+  justify-content: center;
+
+  .phone-item{
+    width: calc(50% - 15px);
+
+    &:first-child{
+      margin-right: 15px;
+    }
+
+    &:last-child{
+      margin-left: 15px;
+    }
+  }
+
+  @media #{$information-phone}{
+    flex-wrap: wrap;
+    padding: 0 15px;
+
+    .phone-item{
+      width: 100%;
+      margin: 0;
+
+      &:first-child{
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+
+      &:last-child{
+        margin-left: 0;
+      }
+    }
+  }
+}

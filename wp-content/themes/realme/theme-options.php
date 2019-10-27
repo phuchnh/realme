@@ -17,6 +17,8 @@ $form = tr_form()->useJson()->setGroup( $this->getName() );
 		echo $form->text( 'Company Email' );
 		echo $form->text( 'Company Phone' );
 		echo $form->text( 'Company Address' );
+        echo $form->text( 'Facebook Fanpage' );
+        echo $form->text( 'Youtube Channel' );
 		echo $form->editor( 'Copyright' );
 	};
 

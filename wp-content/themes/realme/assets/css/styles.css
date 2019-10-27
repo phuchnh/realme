@@ -5086,7 +5086,11 @@ body.show-modal {
         font-size: 18px;
         padding: 20px 0; }
     #realme-home-page .top-news {
-      padding-bottom: 0; }
+      padding-bottom: 20px;
+      margin-bottom: 0;
+      height: auto; }
+      #realme-home-page .top-news .top-news__content {
+        height: auto; }
     #realme-home-page .top-phone {
       padding-bottom: 0; } }
   @media only screen and (max-width: 480px) {
@@ -5105,21 +5109,21 @@ body.show-modal {
       display: none; }
     #realme-home-page .style-w-bg .style__bg.style__bg--sp {
       display: block; }
-    #realme-home-page .top-news {
-      height: 186.7vw; }
-      #realme-home-page .top-news p {
-        top: initial;
-        bottom: 30px;
-        left: 0;
-        width: 100%;
-        text-align: center; }
-      #realme-home-page .top-news .top-news__text {
-        width: 89.06667%;
-        margin-bottom: 20px;
-        margin-left: auto;
-        margin-right: auto; }
-      #realme-home-page .top-news .top-news__btn {
-        width: 66.66667%; }
+    #realme-home-page .top-news .top-news__content {
+      height: auto; }
+    #realme-home-page .top-news p {
+      top: initial;
+      bottom: 30px;
+      left: 0;
+      width: 100%;
+      text-align: center; }
+    #realme-home-page .top-news .top-news__text {
+      width: 89.06667%;
+      margin-bottom: 20px;
+      margin-left: auto;
+      margin-right: auto; }
+    #realme-home-page .top-news .top-news__btn {
+      width: 66.66667%; }
     #realme-home-page .top-phone .top-phone__content p {
       left: 0;
       top: 0;
@@ -6116,3 +6120,25 @@ body.show-modal {
   @media only screen and (max-width: 480px) {
     .admin-bar #page-header.menu-scroll {
       padding-top: 0; } }
+
+.other-phone-layout {
+  display: flex;
+  justify-content: center; }
+  .other-phone-layout .phone-item {
+    width: calc(50% - 15px); }
+    .other-phone-layout .phone-item:first-child {
+      margin-right: 15px; }
+    .other-phone-layout .phone-item:last-child {
+      margin-left: 15px; }
+  @media only screen and (max-width: 480px) {
+    .other-phone-layout {
+      flex-wrap: wrap;
+      padding: 0 15px; }
+      .other-phone-layout .phone-item {
+        width: 100%;
+        margin: 0; }
+        .other-phone-layout .phone-item:first-child {
+          margin-right: 0;
+          margin-bottom: 15px; }
+        .other-phone-layout .phone-item:last-child {
+          margin-left: 0; } }

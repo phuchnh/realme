@@ -33,6 +33,13 @@ include 'ctpt/product.php';
 include 'ctpt/serie.php';
 include 'ctpt/banner.php';
 
+
+/**
+ * Management Other Information
+ */
+include 'core/custom-theme.php';
+
+
 /**
  * Typerocket hooks
  */
