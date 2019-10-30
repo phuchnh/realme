@@ -6,7 +6,17 @@ add_action( 'rest_api_init', function () {
 			$params = array(
 				'imei' => $request->get_param( 'imei' ),
 			);
-			$client = new SoapClient( 'https://warehouse.realmeshop.vn/wss?wsdl' );
+            $context = stream_context_create([
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                ]
+            ]);
+            $options = [
+                'stream_context' => $context
+            ];
+            $client = new SoapClient('https://warehouse.realmeshop.vn/wss?wsdl', $options);
 			$result = $client->__soapCall( 'getImeiInfoCheck', $params );
 			return $result;
 		},
