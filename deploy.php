@@ -1,4 +1,5 @@
 <?php
+
 namespace Deployer;
 
 require 'recipe/common.php';
@@ -17,7 +18,7 @@ set('repository', 'git@github.com:phuchnh/realme.git');
 set('git_tty', true);
 
 // Shared files/dirs between deploys 
-set('shared_files', ['wp-config.php', '.htaccess']);
+// set('shared_files', ['wp-config.php', '.htaccess']);
 set('shared_dirs', ['wp-content/uploads']);
 
 // Writable dirs by web server 
@@ -27,10 +28,10 @@ set('writable_dirs', ['wp-content/uploads']);
 // Hosts
 
 host('52.221.214.151')
-	->user('ubuntu')
-	->identityFile('~/.ssh/nihato-staging.pem')
-	->port(22)
-	->forwardAgent(true)
+    ->user('ubuntu')
+    ->identityFile('~/.ssh/nihato-staging.pem')
+    ->port(22)
+    ->forwardAgent(true)
     ->set('deploy_path', '{{realme}}');
 
 
